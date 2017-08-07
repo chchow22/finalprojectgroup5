@@ -1,1 +1,1 @@
-var app = angular.module('foodModule', []);
+var app = angular.module('miModule', ["ngRoute"]);
