@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="foodModule" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body ng-controller="foodCtrl">
+
+  <p ng-repeat="place in info"> {{ place.restaurant }} in {{ place.location }} <button ng-click="deleteLocation(place.id)">X</button> <button type="button">EDIT</button></p>
+
+  <form ng-submit="addLocation(new)">
+    <input ng-model="new.location" type="text">
+    <input ng-model="new.restaurant" type="text">
+    <input ng-model="new.foodtype" type="text">
+    <input ng-model="new.rating" type="number">
+    <input ng-model="new.price" type="number">
+    <button type="button" ng-click="addLocation(new)">Add New Place</button>
+  </form>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controller.js"></script>
+  <script src="js/service.js"></script>
+</body>
+</html>
