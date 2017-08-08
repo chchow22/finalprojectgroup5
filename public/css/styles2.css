@@ -1,0 +1,151 @@
+/* List */
+
+
+#plannerOuterContainer {
+  position: fixed;
+  height: 600px;
+  width: 25%;
+  background-color: rgba(244, 212, 66, 0.3);
+  top: 15.5%;
+  right: 1%;
+  border-radius: 30px;
+}
+
+#plannerInnerContainer {
+  position: relative;
+  height: 97%;
+  width: 95%;
+  margin: 0 auto;
+  top: 1.5%;
+  background-color: white;
+  border-radius: 25px;
+}
+
+#plannerTitle {
+  margin: 0;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  font-size: 30px;
+  color: rgba(244, 212, 66, 0.8);
+  font-family: 'Fredericka the Great', cursive;
+  font-weight: lighter;
+}
+
+.plannerEvents {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  background-color: white;
+  height: auto;
+  width: 90%;
+  border: 3px double rgba(244, 212, 66, 0.8);
+  border-radius: 12px;
+  padding-bottom: 4px;
+}
+
+.plannerDate {
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 0;
+  color: gray;
+}
+
+.plannerTime {
+  display: inline-block;
+  margin-top: 5px;
+  margin-right: 8px;
+  margin-bottom: 0;
+  float: right;
+  color: gray;
+}
+
+.plannerName {
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 0;
+  font-size: 25px;
+  color: gray;
+}
+.bucketEvents {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(244, 212, 66, 0.3);
+  margin-bottom: 30px;
+  padding-top: 1px;
+  padding-bottom: 10px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 10px;
+}
+
+#bucketContainer {
+  height: 100%;
+  width: 73%;
+}
+
+.bucketEventName {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 40px;
+  margin-bottom: 0;
+  color: gray;
+}
+
+.bucketEventCategory {
+  font-size: 18px;
+  margin-left: 10px;
+  color: gray;
+}
+
+.bucketEventPrice {
+  font-size: 18px;
+  margin-right: 10px;
+  float: right;
+  color: gray;
+}
+
+.bucketEventDescription {
+  font-size: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.bucketEventPhone {
+  font-size: 18px;
+  margin: 0;
+  margin-left: 10px;
+  color: gray;
+}
+
+.bucketEventAddress {
+  font-size: 18px;
+  margin: 0;
+  margin-left: 10px;
+  color: gray;
+  float: right;
+  margin-right: 10px;
+}
+
+.fourImagesContainer {
+  height: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.bucketImages {
+  height: auto;
+  width: 20%;
+  height: 150px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
+  filter: grayscale(0%);
+  border-radius: 10px;
+  animation: none;
+}
