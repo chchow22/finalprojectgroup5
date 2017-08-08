@@ -35,7 +35,7 @@ img {
   margin: 10px;
   color: rgba(0, 0, 0, 0.9);
   border-radius: 10px;
-	animation: fade-in 3s 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in 3s 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 button {
@@ -50,8 +50,26 @@ button {
   right: 100px;
   outline: none;
   border-radius: 50px;
-	animation: fade-in 3s 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in 3s 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   filter: grayscale(100%);
+}
+
+.goToTop {
+  position: fixed;
+  width: 100px;
+  height: 40px;
+  bottom: 100px;
+  right: 100px;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 20px;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+}
+
+.goToTop:hover {
+  background-color: #F4AC45;
 }
 
 button:hover {
