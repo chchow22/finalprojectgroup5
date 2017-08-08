@@ -1,0 +1,29 @@
+<div id = "bucketContainer" infinite-scroll = "getMoreBucketEvents()">
+  <div class = "bucketEvents" ng-repeat = "bucketEvent in bucketEvents">
+
+    <p class = "bucketEventName"> {{bucketEvent.name}} </p>
+    <span class = "bucketEventCategory"> {{bucketEvent.category}} </span>
+    <span class = "bucketEventPrice"> Price: {{bucketEvent.price}} </span>
+    <p class = "bucketEventDescription"> {{bucketEvent.description}} </p>
+    <div class = "fourImagesContainer">
+      <img class = "bucketImages" src = {{bucketEvent.image1}}>
+      <img class = "bucketImages" src = {{bucketEvent.image2}}>
+      <img class = "bucketImages" src = {{bucketEvent.image3}}>
+      <img class = "bucketImages" src = {{bucketEvent.image4}}>
+    </div>
+    <span class = "bucketEventPhone"> {{bucketEvent.phone}} </span>
+    <span class = "bucketEventAddress"> {{bucketEvent.address}} </span>
+
+  </div>
+</div>
+
+<div id = "plannerOuterContainer">
+  <div id = "plannerInnerContainer" style= "overflow-y:scroll; height: 582px;">
+    <h3 id = "plannerTitle"> Planner </h3>
+    <div class = "plannerEvents" ng-repeat = "plannerEvent in plannerEvents">
+      <span class = "plannerDate"> {{plannerEvent.date}} </span>
+      <span class = "plannerTime"> {{plannerEvent.time}} </span>
+      <p class = "plannerName"> {{plannerEvent.name}} </span>
+    </div>
+  </div>
+</div>
