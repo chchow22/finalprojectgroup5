@@ -1,0 +1,5 @@
+{
+  "name": "WanderList",
+  "description": "Find amazing sights and events around Michigan",
+  "image": "heroku/node.js"
+}
