@@ -69,6 +69,28 @@
   color: gray;
 }
 
+.deleteFinishContainer {
+  margin: 0 auto;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  width: 95%;
+}
+
+.deletePlanner {
+  height: 30px;
+  border-radius: 8px;
+  outline: none;
+  color: white;
+  background-color: red;
+}
+
+.finishPlanner {
+  float: right;
+  height: 30px;
+  border-radius: 8px;
+  outline: none;
+}
+
 .titleAndButton {
   width: 100%;
 }
