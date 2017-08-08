@@ -1,7 +1,10 @@
 <div id = "bucketContainer" infinite-scroll = "getMoreBucketEvents()">
   <div class = "bucketEvents" ng-repeat = "bucketEvent in bucketEvents">
 
-    <p class = "bucketEventName"> {{bucketEvent.name}} </p>
+    <div class = "titleAndButton">
+      <span class = "bucketEventName"> {{bucketEvent.name}} </span>
+      <button type = "button" class = "addToPlannerButton"> Add to Planner </button>
+    </div>
     <span class = "bucketEventCategory"> {{bucketEvent.category}} </span>
     <span class = "bucketEventPrice"> Price: {{bucketEvent.price}} </span>
     <p class = "bucketEventDescription"> {{bucketEvent.description}} </p>
