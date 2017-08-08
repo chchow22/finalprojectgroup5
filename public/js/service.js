@@ -8,7 +8,8 @@ app.factory('miFactory', function($http) {
   // List Page Variables
   var likedEvents = [];
   var bucketEvents = [
-      {name: "Fox Theater",
+      {id: 1,
+      name: "Fox Theater",
       price: "$$$",
       category: "Arts & Culture",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra enim id nunc facilisis vestibulum. Morbi porttitor libero a finibus tempus. Nullam condimentum, mi molestie convallis feugiat, odio leo molestie massa, sit amet consequat ipsum eros at lorem. Mauris rutrum pretium ex et molestie. Nam lorem lacus, cursus eget tempor non, cursus interdum nunc.",
@@ -21,7 +22,8 @@ app.factory('miFactory', function($http) {
       website: "http://www.olympiaentertainment.com/venues/detail/fox-theatre"
       },
 
-      {name: "The Mall At Partridge Creek",
+      {id: 2,
+      name: "The Mall At Partridge Creek",
       price: "$$$",
       category: "Shopping",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra enim id nunc facilisis vestibulum. Morbi porttitor libero a finibus tempus. Nullam condimentum, mi molestie convallis feugiat, odio leo molestie massa, sit amet consequat ipsum eros at lorem. Mauris rutrum pretium ex et molestie. Nam lorem lacus, cursus eget tempor non, cursus interdum nunc.",
@@ -36,49 +38,49 @@ app.factory('miFactory', function($http) {
     ];
 
   var plannerEvents = [{
-    id: 0,
+    id: 1,
     name: "Fox Theater",
     date: "Aug 9 2017",
     time: "17:00"
   },
   {
-    id: 0,
+    id: 2,
     name: "The Mall At Partridge Creek",
     date: "Aug 10 2017",
     time: "18:00"
   },
   {
-    id: 0,
+    id: 3,
     name: "Snowboarding",
     date: "Aug 11 2017",
     time: "17:00"
   },
   {
-    id: 0,
+    id: 4,
     name: "Museum in Grand Rapids",
     date: "Aug 12 2017",
     time: "18:00"
   },
   {
-    id: 0,
+    id: 5,
     name: "Museum in Ann Arbor",
     date: "Aug 13 2017",
     time: "17:00"
   },
   {
-    id: 0,
+    id: 6,
     name: "McDonalds",
     date: "Aug 14 2017",
     time: "18:00"
   },
   {
-    id: 0,
+    id: 7,
     name: "Walmart",
     date: "Aug 15 2017",
     time: "17:00"
   },
   {
-    id: 0,
+    id: 8,
     name: "Costco",
     date: "Aug 16 2017",
     time: "18:00"
@@ -90,7 +92,10 @@ app.factory('miFactory', function($http) {
 
     getBucketEvents: getBucketEvents,
     getMoreBucketEvents: getMoreBucketEvents,
-    getPlannerEvents: getPlannerEvents
+    getPlannerEvents: getPlannerEvents,
+    addPlanner: addPlanner,
+    deletePlanner: deletePlanner,
+    finishPlanner: finishPlanner
   }
 
 
@@ -101,20 +106,21 @@ app.factory('miFactory', function($http) {
   }
 
   function getMoreHomeEvents() {
-    
+
   }
 
   // List Page Functions
   function setBucketEvents() {
-
   }
 
   function getBucketEvents() {
+    setBucketEvents();
     return bucketEvents;
   }
 
   function getMoreBucketEvents() {
-    bucketEvents.push({name: "Fox Theater",
+    bucketEvents.push({ id: 3,
+    name: "Fox Theater",
     price: "$$$",
     category: "Arts & Culture",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra enim id nunc facilisis vestibulum. Morbi porttitor libero a finibus tempus. Nullam condimentum, mi molestie convallis feugiat, odio leo molestie massa, sit amet consequat ipsum eros at lorem. Mauris rutrum pretium ex et molestie. Nam lorem lacus, cursus eget tempor non, cursus interdum nunc.",
@@ -127,7 +133,8 @@ app.factory('miFactory', function($http) {
     website: "http://www.olympiaentertainment.com/venues/detail/fox-theatre"
   },
 
-    {name: "The Mall At Partridge Creek",
+    {id: 4,
+    name: "The Mall At Partridge Creek",
     price: "$$$",
     category: "Shopping",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra enim id nunc facilisis vestibulum. Morbi porttitor libero a finibus tempus. Nullam condimentum, mi molestie convallis feugiat, odio leo molestie massa, sit amet consequat ipsum eros at lorem. Mauris rutrum pretium ex et molestie. Nam lorem lacus, cursus eget tempor non, cursus interdum nunc.",
@@ -146,12 +153,25 @@ app.factory('miFactory', function($http) {
     return plannerEvents;
   }
 
-  function bucketSorter(eventsArray) {
-    return eventsArray;
+  function addPlanner(idString) {
+    console.log(idString);
+    plannerSorter();
   }
 
-  function plannerSorter(eventsArray) {
-    return eventsArray;
+  function deletePlanner(idString) {
+    console.log(idString);
+  }
+
+  function finishPlanner(idString) {
+    console.log(idString);
+  }
+
+  function bucketSorter() {
+
+  }
+
+  function plannerSorter() {
+
   }
 
 });

@@ -68,6 +68,46 @@
   font-size: 25px;
   color: gray;
 }
+
+.deleteFinishContainer {
+  margin: 0 auto;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  width: 95%;
+}
+
+.deletePlanner {
+  height: 30px;
+  border-radius: 8px;
+  outline: none;
+  color: white;
+  background-color: red;
+}
+
+.finishPlanner {
+  float: right;
+  height: 30px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.titleAndButton {
+  width: 100%;
+}
+
+.addToPlannerButton {
+  float: right;
+  height: 30px;
+  margin-top: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  outline: none;
+  color: white;
+  background-color: orange;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .bucketEvents {
   width: 100%;
   height: 100%;
