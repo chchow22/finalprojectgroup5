@@ -70,6 +70,10 @@ img {
   filter: grayscale(0%);
 }
 
+.notSelected {
+  filter: grayscale(100%);
+}
+
 @media (min-width: 550px) {
   .container {
     grid-template-columns: 80% 20%;

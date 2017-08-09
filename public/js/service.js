@@ -6,6 +6,7 @@ app.factory('miFactory', function($http) {
   var photosFromDB;
 
   var homePhotos = [];
+  var homePhotosIndex = 0;
   var randomPhotoIDs = [];
   var likedPhotos = [];
 
@@ -94,7 +95,7 @@ app.factory('miFactory', function($http) {
     initialSetupHome: initialSetupHome,
     getHomePhotos: getHomePhotos,
     getMoreHomePhotos: getMoreHomePhotos,
-    jQuery: jQuery,
+    // jQuery: jQuery,
 
     homeListTransition: homeListTransition,
 
@@ -116,40 +117,41 @@ app.factory('miFactory', function($http) {
     getPhotos().then(function() {
       randomize(photosFromDB.length);
       for(var i = 1; i <= 9; i++) {
-        for (var j = 1; j < photosFromDB.length; j++) {
+        for (var j = 0; j < photosFromDB.length; j++) {
           if (randomPhotoIDs[i] == photosFromDB[j].id) {
             homePhotos.push(photosFromDB[j]);
           }
         }
       }
       console.log(homePhotos);
-      jQuery();
+      homePhotosIndex = 8;
+
     });
 
 
   }
 
-  function jQuery() {
-    $(document).ready(function() {
-      $('img').on('click', function() {
-        $(this).toggleClass('selected');
-      });
-
-      $(window).scroll(function() {
-        if ($(this).scrollTop() > 200) {
-          $('.goToTop').fadeIn();
-        } else {
-          $('.goToTop').fadeOut();
-        }
-      });
-      $('.goToTop').click(function() {
-        $("html, body").animate({
-          scrollTop: 0
-        }, 1000);
-        return false;
-      });
-    });
-  }
+  // function jQuery() {
+  //   $(document).ready(function() {
+  //     $('img').on('click', function() {
+  //       $(this).toggleClass('selected');
+  //     });
+  //
+  //     $(window).scroll(function() {
+  //       if ($(this).scrollTop() > 200) {
+  //         $('.goToTop').fadeIn();
+  //       } else {
+  //         $('.goToTop').fadeOut();
+  //       }
+  //     });
+  //     $('.goToTop').click(function() {
+  //       $("html, body").animate({
+  //         scrollTop: 0
+  //       }, 1000);
+  //       return false;
+  //     });
+  //   });
+  // }
 
   function randomize(count) {
     while(randomPhotoIDs.length < count) {
@@ -172,7 +174,15 @@ app.factory('miFactory', function($http) {
   }
 
   function getMoreHomePhotos() {
-    jQuery();
+    for(var i = homePhotosIndex + 1; i <= homePhotosIndex + 6; i++) {
+      for (var j = 0; j < photosFromDB.length; j++) {
+        if (randomPhotoIDs[i] == photosFromDB[j].id) {
+          homePhotos.push(photosFromDB[j]);
+        }
+      }
+    }
+    homePhotosIndex += 6;
+
   }
 
   // Transition Functions
