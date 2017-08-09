@@ -82,6 +82,7 @@
   outline: none;
   color: white;
   background-color: red;
+  cursor: pointer;
 }
 
 .finishPlanner {
@@ -89,6 +90,7 @@
   height: 30px;
   border-radius: 8px;
   outline: none;
+  cursor: pointer;
 }
 
 .titleAndButton {
@@ -106,6 +108,7 @@
   background-color: orange;
   padding-left: 10px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 .bucketEvents {

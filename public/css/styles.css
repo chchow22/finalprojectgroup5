@@ -9,7 +9,7 @@ header {
   margin-top: 15px;
   margin-bottom: 30px;
   width: 100%;
-  animation: text-focus-in 1s 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 2s 0s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
@@ -21,7 +21,7 @@ h1 {
   font-family: 'Fredericka the Great', cursive;
   font-weight: lighter;
   font-size: 40px;
-  animation: text-focus-in 1s 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both, jello-vertical 0.9s 4s 1 both;
+  animation: text-focus-in 2s 0s cubic-bezier(0.550, 0.085, 0.680, 0.530) both, jello-vertical 0.9s 1.5s 1 both;
 }
 
 img {
@@ -31,7 +31,7 @@ img {
   margin: 10px;
   color: rgba(0, 0, 0, 0.9);
   border-radius: 10px;
-  animation: fade-in 3s 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in 3s 0s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .button {

@@ -2,7 +2,8 @@ var app = angular.module('miModule');
 
 app.factory('miFactory', function($http) {
   // Home Page Variables
-  var homeEvents = [];
+  var homePhotos = [];
+  var randomPhotoIDs = [];
   var likedPhotos = [];
 
   // List Page Variables
@@ -87,8 +88,11 @@ app.factory('miFactory', function($http) {
   }];
 
   return {
-    getHomeEvents: getHomeEvents,
+    initialSetupHome: initalSetupHome,
+    getHomePhotos: getHomePhotos,
     getMoreHomeEvents: getMoreHomeEvents,
+
+    homeListTransition: homeListTransition,
 
     getBucketEvents: getBucketEvents,
     getMoreBucketEvents: getMoreBucketEvents,
@@ -101,20 +105,34 @@ app.factory('miFactory', function($http) {
 
 
   // Home Page Functions
-  function getHomeEvents() {
-    return homeEvents;
+  function initialSetupHome() {
+
+  }
+
+  function getHomePhotos() {
+    return homePhotos;
   }
 
   function getMoreHomeEvents() {
 
   }
 
-  // List Page Functions
-  function setBucketEvents() {
+  // Transition Functions
+  function homeListTransition() {
+
   }
 
+  function convertPhotosToEvents() {
+
+  }
+
+  function eventsSorter() {
+
+  }
+
+  // List Page Functions
+
   function getBucketEvents() {
-    setBucketEvents();
     return bucketEvents;
   }
 
@@ -164,10 +182,6 @@ app.factory('miFactory', function($http) {
 
   function finishPlanner(idString) {
     console.log(idString);
-  }
-
-  function bucketSorter() {
-
   }
 
   function plannerSorter() {
