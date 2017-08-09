@@ -4,6 +4,7 @@ app.controller('listCtrl', function($scope, miFactory) {
 
   $scope.plannerEvents = miFactory.getPlannerEvents();
   $scope.bucketEvents = miFactory.getBucketEvents();
+  $scope.jQuery();
   $scope.getMoreBucketEvents = function() {
     miFactory.getMoreBucketEvents();
     $scope.jQuery();

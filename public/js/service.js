@@ -94,6 +94,7 @@ app.factory('miFactory', function($http) {
     initialSetupHome: initialSetupHome,
     getHomePhotos: getHomePhotos,
     getMoreHomePhotos: getMoreHomePhotos,
+    jQuery: jQuery,
 
     homeListTransition: homeListTransition,
 
@@ -122,6 +123,31 @@ app.factory('miFactory', function($http) {
         }
       }
       console.log(homePhotos);
+      jQuery();
+    });
+
+
+  }
+
+  function jQuery() {
+    $(document).ready(function() {
+      $('img').on('click', function() {
+        $(this).toggleClass('selected');
+      });
+
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 200) {
+          $('.goToTop').fadeIn();
+        } else {
+          $('.goToTop').fadeOut();
+        }
+      });
+      $('.goToTop').click(function() {
+        $("html, body").animate({
+          scrollTop: 0
+        }, 1000);
+        return false;
+      });
     });
   }
 
@@ -146,7 +172,7 @@ app.factory('miFactory', function($http) {
   }
 
   function getMoreHomePhotos() {
-
+    jQuery();
   }
 
   // Transition Functions
