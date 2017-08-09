@@ -88,7 +88,7 @@ app.factory('miFactory', function($http) {
   }];
 
   return {
-    initialSetupHome: initalSetupHome,
+    initialSetupHome: initialSetupHome,
     getHomePhotos: getHomePhotos,
     getMoreHomeEvents: getMoreHomeEvents,
 
