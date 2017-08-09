@@ -1,20 +1,6 @@
 <div class="container">
-  <div class="main">
-    <img src="https://tinyurl.com/yb3pt4ov">
-    <img src="http://tinyurl.com/y7vh5buq">
-    <img src="http://blakefarms.com/wp-content/uploads/2016/07/blakes_17.jpg">
-    <img src="https://www.nationalparks.org/sites/default/files/styles/large_list_image_2x/public/PicturedRocksNationalLakeshoreSunset.jpg?itok=dmciLpq5&timestamp=1468267379" alt="">
-    <img src="https://farm1.staticflickr.com/272/31856045341_8664e33137_k.jpg" alt="">
-    <img src="https://tinyurl.com/yb3pt4ov">
-    <img src="http://tinyurl.com/y7vh5buq">
-    <img src="https://tinyurl.com/yb3pt4ov">
-    <img src="http://tinyurl.com/y7vh5buq">
-    <img src="http://blakefarms.com/wp-content/uploads/2016/07/blakes_17.jpg">
-    <img src="https://www.nationalparks.org/sites/default/files/styles/large_list_image_2x/public/PicturedRocksNationalLakeshoreSunset.jpg?itok=dmciLpq5&timestamp=1468267379" alt="">
-    <img src="https://farm1.staticflickr.com/272/31856045341_8664e33137_k.jpg" alt="">
-    <img src="https://tinyurl.com/yb3pt4ov">
-    <img src="http://tinyurl.com/y7vh5buq">
-    <img src="http://blakefarms.com/wp-content/uploads/2016/07/blakes_17.jpg">
+  <div class="main" infinite-scroll = "getMoreHomePhotos()">
+    <img ng-repeat = "homePhoto in homePhotos" src = {{homePhoto.img_url}} style = "width: 320px;height:200px;">
   </div>
   <div class="sidebar">
     <button class='button' type="button"></button>

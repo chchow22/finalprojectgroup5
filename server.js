@@ -5,7 +5,7 @@ var routes = require('./routes');
 var port = process.env.PORT || 5000;
 
 app.use(bodyParser.json({ extended: true }));
-app.use('/api', routes);
+app.use('/db', routes);
 app.use(express.static(__dirname + '/public'));
 
 

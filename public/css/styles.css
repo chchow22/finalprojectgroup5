@@ -25,9 +25,8 @@ h1 {
 }
 
 img {
+  display: inline-block;
   filter: grayscale(100%);
-  width: 100%;
-  height: auto;
   margin: 10px;
   color: rgba(0, 0, 0, 0.9);
   border-radius: 10px;

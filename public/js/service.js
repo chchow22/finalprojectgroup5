@@ -2,6 +2,9 @@ var app = angular.module('miModule');
 
 app.factory('miFactory', function($http) {
   // Home Page Variables
+  var eventsFromDB;
+  var photosFromDB;
+
   var homePhotos = [];
   var randomPhotoIDs = [];
   var likedPhotos = [];
@@ -90,7 +93,7 @@ app.factory('miFactory', function($http) {
   return {
     initialSetupHome: initialSetupHome,
     getHomePhotos: getHomePhotos,
-    getMoreHomeEvents: getMoreHomeEvents,
+    getMoreHomePhotos: getMoreHomePhotos,
 
     homeListTransition: homeListTransition,
 
@@ -99,7 +102,9 @@ app.factory('miFactory', function($http) {
     getPlannerEvents: getPlannerEvents,
     addPlanner: addPlanner,
     deletePlanner: deletePlanner,
-    finishPlanner: finishPlanner
+    finishPlanner: finishPlanner,
+
+    getPhotos: getPhotos
   }
 
 
@@ -107,13 +112,40 @@ app.factory('miFactory', function($http) {
   // Home Page Functions
   function initialSetupHome() {
 
+    getPhotos().then(function() {
+      randomize(photosFromDB.length);
+      for(var i = 1; i <= 9; i++) {
+        for (var j = 1; j < photosFromDB.length; j++) {
+          if (randomPhotoIDs[i] == photosFromDB[j].id) {
+            homePhotos.push(photosFromDB[j]);
+          }
+        }
+      }
+      console.log(homePhotos);
+    });
+  }
+
+  function randomize(count) {
+    while(randomPhotoIDs.length < count) {
+      var randomNum = Math.floor(Math.random()*count + 1);
+      var repeat = false;
+      for(var j = 0; j < randomPhotoIDs.length; j++) {
+        if (randomNum == randomPhotoIDs[j]) {
+          repeat = true;
+        }
+      }
+      if (!repeat) {
+        randomPhotoIDs.push(randomNum);
+      }
+    }
+
   }
 
   function getHomePhotos() {
     return homePhotos;
   }
 
-  function getMoreHomeEvents() {
+  function getMoreHomePhotos() {
 
   }
 
@@ -187,5 +219,29 @@ app.factory('miFactory', function($http) {
   function plannerSorter() {
 
   }
+
+  // Database Functions
+
+  function getEvents() {
+    var p = $http({
+      url: '/db/events',
+      method: 'GET'
+    }).then(function(response) {
+      eventsFromDB = response.data;
+    });
+    return p;
+  };
+
+  function getPhotos() {
+    var p = $http({
+      url: '/db/photos',
+      method: 'GET'
+    }).then(function(response) {
+      photosFromDB = response.data;
+      console.log(photosFromDB);
+    });
+    return p;
+  };
+
 
 });
