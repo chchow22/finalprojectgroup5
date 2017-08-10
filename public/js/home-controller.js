@@ -2,11 +2,13 @@ var app = angular.module('miModule');
 
 app.controller('homeCtrl', function($scope, $timeout, miFactory) {
 
+  function classToggle() {
+    $(this).toggleClass('selected');
+  }
+
   $timeout(function() {
-    $('img').on('click', function() { 
-      $(this).toggleClass('selected');
-    });
-  }, 100);
+    $('img').on('click', classToggle);
+  }, 300);
 
 
   // $('img').on('click', function() {
@@ -20,9 +22,7 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
       $('.goToTop').fadeOut();
     }
 
-    $('img').on('click', function() {
-      $(this).toggleClass('selected');
-    });
+    $('img').on('click', classToggle);
 
   });
 
