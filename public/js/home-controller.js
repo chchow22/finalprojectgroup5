@@ -2,12 +2,38 @@ var app = angular.module('miModule');
 
 app.controller('homeCtrl', function($scope, $timeout, miFactory) {
 
-  function classToggle() {
-    $(this).toggleClass('selected');
+  // Home Functions/Variables
+  $scope.photoSelected = false
+  $scope.addOrRemovePhotoFromBucket = function() {
+    if ($scope.photoSelected) {
+      $scope.addPhotoToBucket();
+    }
+    else {
+      $scope.removePhotoFromBucket();
+    }
+  }
+  $scope.addPhotoToBucket = function() {
+    console.log(this);
+  }
+  $scope.removePhotoFromBucket = function() {
+    console.log(this);
+
   }
 
-  $scope.photoSelected = false
+  $scope.homePhotos = miFactory.getHomePhotos();
+  $scope.getMoreHomePhotos = function() {
+    miFactory.getMoreHomePhotos();
+  };
+  miFactory.initialSetupHome();
+  miFactory.getPhotos();
 
+  // Home-List transition functions
+  $scope.homeListTransition = function() {
+    miFactory.homeListTransition();
+  }
+
+
+  //JQuery
   $(window).scroll(function() {
     if ($(this).scrollTop() > 200) {
       $('.goToTop').fadeIn();
@@ -22,15 +48,4 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
     }, 1000);
     return false;
   });
-
-  $scope.homePhotos = miFactory.getHomePhotos();
-  $scope.getMoreHomePhotos = function() {
-    miFactory.getMoreHomePhotos();
-  };
-
-  miFactory.initialSetupHome();
-
-  miFactory.getPhotos();
-
-
 });
