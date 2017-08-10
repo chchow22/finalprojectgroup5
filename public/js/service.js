@@ -42,14 +42,14 @@ app.factory('miFactory', function($http) {
 
     getPhotos().then(function() {
       randomize(photosFromDB.length);
-      for(var i = 1; i <= 9; i++) {
+      for(var i = 0; i <= 8; i++) {
         for (var j = 0; j < photosFromDB.length; j++) {
           if (randomPhotoIDs[i] == photosFromDB[j].id) {
             homePhotos.push(photosFromDB[j]);
           }
         }
       }
-      homePhotosIndex = 9;
+      homePhotosIndex = 8;
 
     });
 
@@ -150,15 +150,15 @@ app.factory('miFactory', function($http) {
       }
     }
 
-
-    for (var m = 0; m < bucketEvents.length; m++) {
-      bucketEvents[m].images = [];
-      for (var n = 0; n < photosFromDB.length; n++) {
-        if (photosFromDB[n].event_id == bucketEvents[m].id) {
-          bucketEvents[m].images.push(photosFromDB[n].img_url);
-        }
-      }
-    }
+    //
+    // for (var m = 0; m < bucketEvents.length; m++) {
+    //   bucketEvents[m].images = [];
+    //   for (var n = 0; n < photosFromDB.length; n++) {
+    //     if (photosFromDB[n].event_id == bucketEvents[m].id) {
+    //       bucketEvents[m].images.push(photosFromDB[n].img_url);
+    //     }
+    //   }
+    // }
 
 
   }

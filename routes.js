@@ -5,7 +5,7 @@ var pool = require('./pg-connection-pool');
 
 
 route.get('/events', function(req, res, next) {
-  pool.query('select * from events order by id').then(function(result) {
+  pool.query('select * from event order by id').then(function(result) {
     res.send(result.rows);
   });
 });
