@@ -262,12 +262,18 @@ console.log(quicksort(array.slice()));
 
   function addPlanner(idString) {
     console.log(idString);
+    plannerEvents.push({
+      id: bucketEvents[idString].id,
+      name: bucketEvents[idString].name,
+      date: "Date",
+      time: "Time"
+    });
+    console.log(plannerEvents);
     plannerSorter();
   }
 
   function deletePlanner(idString) {
-    console.log(idString);
-
+    plannerEvents.splice(idString, 1);
   }
 
   function finishPlanner(idString) {
