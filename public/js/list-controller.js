@@ -6,22 +6,19 @@ app.controller('listCtrl', function($scope, miFactory) {
   $scope.bucketEvents = miFactory.getBucketEvents();
   $scope.getMoreBucketEvents = function() {
     miFactory.getMoreBucketEvents();
-    $scope.jQuery();
+
   }
 
+  $scope.addButtonClicked = function () {
+    miFactory.addPlanner(this.$index);
+  }
 
-  $scope.jQuery = function () {
-    $(document).ready(function() {
-      $(".deletePlanner").on("click", function(event) {
-        miFactory.deletePlanner(event.target.id);
-      });
-      $(".finishPlanner").on("click", function(event) {
-        miFactory.finishPlanner(event.target.id);
-      });
-      $(".addToPlannerButton").on("click", function(event) {
-        miFactory.addPlanner(event.target.id);
-      });
-    });
-  };
-  $scope.jQuery();
+  $scope.deleteButtonClicked = function() {
+    miFactory.deletePlanner(this.$index);
+  }
+
+  $scope.finishButtonClicked = function() {
+    miFactory.finishPlanner(this.$index);
+  }
+
 });

@@ -95,7 +95,6 @@ app.factory('miFactory', function($http) {
     initialSetupHome: initialSetupHome,
     getHomePhotos: getHomePhotos,
     getMoreHomePhotos: getMoreHomePhotos,
-    // jQuery: jQuery,
 
     homeListTransition: homeListTransition,
 
@@ -123,7 +122,6 @@ app.factory('miFactory', function($http) {
           }
         }
       }
-      console.log(homePhotos);
       homePhotosIndex = 8;
 
     });
@@ -131,29 +129,12 @@ app.factory('miFactory', function($http) {
 
   }
 
-  // function jQuery() {
-  //   $(document).ready(function() {
-  //     $('img').on('click', function() {
-  //       $(this).toggleClass('selected');
-  //     });
-  //
-  //     $(window).scroll(function() {
-  //       if ($(this).scrollTop() > 200) {
-  //         $('.goToTop').fadeIn();
-  //       } else {
-  //         $('.goToTop').fadeOut();
-  //       }
-  //     });
-  //     $('.goToTop').click(function() {
-  //       $("html, body").animate({
-  //         scrollTop: 0
-  //       }, 1000);
-  //       return false;
-  //     });
-  //   });
-  // }
-
   function randomize(count) {
+
+    var randomNum = Math.floor(Math.random()*count + 1);
+    randomPhotoIDs.push(randomNum);
+
+
     while(randomPhotoIDs.length < count) {
       var randomNum = Math.floor(Math.random()*count + 1);
       var repeat = false;
@@ -176,13 +157,13 @@ app.factory('miFactory', function($http) {
   function getMoreHomePhotos() {
     for(var i = homePhotosIndex + 1; i <= homePhotosIndex + 6; i++) {
       for (var j = 0; j < photosFromDB.length; j++) {
+
         if (randomPhotoIDs[i] == photosFromDB[j].id) {
           homePhotos.push(photosFromDB[j]);
         }
       }
     }
     homePhotosIndex += 6;
-
   }
 
   // Transition Functions
@@ -246,10 +227,12 @@ app.factory('miFactory', function($http) {
 
   function deletePlanner(idString) {
     console.log(idString);
+
   }
 
   function finishPlanner(idString) {
     console.log(idString);
+
   }
 
   function plannerSorter() {
@@ -274,7 +257,6 @@ app.factory('miFactory', function($http) {
       method: 'GET'
     }).then(function(response) {
       photosFromDB = response.data;
-      console.log(photosFromDB);
     });
     return p;
   };

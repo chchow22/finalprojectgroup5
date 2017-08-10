@@ -6,14 +6,7 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
     $(this).toggleClass('selected');
   }
 
-  $timeout(function() {
-    $('img').on('click', classToggle);
-  }, 300);
-
-
-  // $('img').on('click', function() {
-  //   $(this).toggleClass('selected');
-  // });
+  $scope.photoSelected = false
 
   $(window).scroll(function() {
     if ($(this).scrollTop() > 200) {
@@ -21,9 +14,6 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
     } else {
       $('.goToTop').fadeOut();
     }
-
-    $('img').on('click', classToggle);
-
   });
 
   $('.goToTop').click(function() {
