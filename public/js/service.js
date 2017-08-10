@@ -260,13 +260,13 @@ console.log(quicksort(array.slice()));
     return plannerEvents;
   }
 
-  function addPlanner(idString) {
+  function addPlanner(idString, date, time) {
     console.log(idString);
     plannerEvents.push({
       id: bucketEvents[idString].id,
       name: bucketEvents[idString].name,
-      date: "Date",
-      time: "Time"
+      date: date,
+      time: time
     });
     console.log(plannerEvents);
     plannerSorter();

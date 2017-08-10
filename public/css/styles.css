@@ -1,7 +1,15 @@
 .container {
-  display: grid;
+  /*display: grid;*/
   width: 100%;
-  grid-template-columns: 70% 30%;
+  /*grid-template-columns: 70% 30%;*/
+}
+
+.imgContainer {
+  width: 70%;
+}
+
+.sidebar {
+  width: 30%;
 }
 
 header {
@@ -77,8 +85,11 @@ img {
 }
 
 @media (min-width: 550px) {
-  .container {
-    grid-template-columns: 80% 20%;
+  .imgContainer {
+    width: 70%;
+  }
+  .sidebar {
+    width: 30%;
   }
   header {
     margin-left: 30px;

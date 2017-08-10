@@ -3,17 +3,16 @@ var app = angular.module("miModule");
 app.controller('listCtrl', function($scope, miFactory) {
 
   miFactory.homeListTransition();
-  
+
   $scope.plannerEvents = miFactory.getPlannerEvents();
   $scope.bucketEvents = miFactory.getBucketEvents();
   $scope.getMoreBucketEvents = function() {
     miFactory.getMoreBucketEvents();
-
   }
 
 
-  $scope.addButtonClicked = function () {
-    miFactory.addPlanner(this.$index);
+  $scope.addButtonClicked = function (date, time) {
+    miFactory.addPlanner(this.$index, date, time);
   }
 
   $scope.deleteButtonClicked = function() {

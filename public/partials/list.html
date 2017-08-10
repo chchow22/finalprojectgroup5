@@ -3,7 +3,31 @@
 
     <div class = "titleAndButton">
       <span class = "bucketEventName"> {{bucketEvent.name}} </span>
-      <button type = "button" class = "addToPlannerButton" id = "addPlanner{{bucketEvent.id}}" ng-click = "addButtonClicked()"> Add to Planner </button>
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Add to Planner
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Set Date and Time</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" placeholder="Date of event" ng-model='event_date'>
+        <input type="text" placeholder="Time of event" ng-model='event_time'>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type = "button" class = "addToPlannerButton" id = "addPlanner{{bucketEvent.id}}" ng-click = "addButtonClicked(event_date, event_time)"> Add to Planner </button>
+      </div>
+    </div>
+  </div>
+</div>
+
     </div>
     <span class = "bucketEventCategory"> {{bucketEvent.category}} </span>
     <span class = "bucketEventPrice"> Price: {{bucketEvent.price}} </span>
