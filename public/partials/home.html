@@ -1,6 +1,6 @@
 <div class="container">
   <div class="main" infinite-scroll = "getMoreHomePhotos()" >
-    <img ng-repeat = "homePhoto in homePhotos" ng-src = {{homePhoto.img_url}} style = "width: 320px;height:200px;" ng-class="{\'selected\': photoSelected}" ng-click="photoSelected = !photoSelected; addOrRemovePhotoFromBucket()">
+    <home-image> </home-image>
   </div>
   <div class="sidebar">
     <button class='button' type="button" onclick="window.location='/#!/list';" ></button>

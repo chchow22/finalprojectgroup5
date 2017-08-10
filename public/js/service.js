@@ -20,6 +20,8 @@ app.factory('miFactory', function($http) {
     initialSetupHome: initialSetupHome,
     getHomePhotos: getHomePhotos,
     getMoreHomePhotos: getMoreHomePhotos,
+    addLikedPhotos: addLikedPhotos,
+    removeLikedPhotos: removeLikedPhotos,
 
     homeListTransition: homeListTransition,
 
@@ -89,6 +91,21 @@ app.factory('miFactory', function($http) {
       }
     }
     homePhotosIndex += 6;
+  }
+
+  function addLikedPhotos(index) {
+    likedPhotos.push(randomPhotoIDs[index]);
+  }
+
+  function removeLikedPhotos(index) {
+    var removeIndex;
+
+    for (var i = 0; i < likedPhotos.length; i++) {
+      if (randomPhotoIDs[index] == likedPhotos[i]) {
+        removeIndex = i;
+      }
+    }
+    likedPhotos.splice(removeIndex, 1);
   }
 
   // Transition Functions

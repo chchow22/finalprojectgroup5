@@ -5,19 +5,19 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   // Home Functions/Variables
   $scope.photoSelected = false
   $scope.addOrRemovePhotoFromBucket = function() {
-    if ($scope.photoSelected) {
-      $scope.addPhotoToBucket();
+
+    if (this.photoSelected) {
+      $scope.addPhotoToBucket(this.$index);
     }
     else {
-      $scope.removePhotoFromBucket();
+      $scope.removePhotoFromBucket(this.$index);
     }
   }
-  $scope.addPhotoToBucket = function() {
-    console.log(this);
+  $scope.addPhotoToBucket = function(index) {
+    miFactory.addLikedPhotos(index);
   }
-  $scope.removePhotoFromBucket = function() {
-    console.log(this);
-
+  $scope.removePhotoFromBucket = function(index) {
+    miFactory.removeLikedPhotos(index);
   }
 
   $scope.homePhotos = miFactory.getHomePhotos();
