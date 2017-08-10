@@ -9,6 +9,8 @@ app.controller('listCtrl', function($scope, miFactory) {
 
   }
 
+  miFactory.homeListTransition();
+  
   $scope.addButtonClicked = function () {
     miFactory.addPlanner(this.$index);
   }

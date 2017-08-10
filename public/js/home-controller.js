@@ -27,11 +27,6 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   miFactory.initialSetupHome();
   miFactory.getPhotos();
 
-  // Home-List transition functions
-  $scope.homeListTransition = function() {
-    miFactory.homeListTransition();
-  }
-
 
   //JQuery
   $(window).scroll(function() {
