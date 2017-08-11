@@ -1,0 +1,14 @@
+<div id = "plannerOuterContainer">
+  <div id = "plannerInnerContainer" style= "overflow-y:scroll; height: 582px;">
+    <h3 id = "plannerTitle"> Planner </h3>
+    <div class = "plannerEvents" ng-repeat = "plannerEvent in plannerEvents">
+      <span type = "text" class = "plannerDate"> {{plannerEvent.date}} </span>
+      <span type = "text" class = "plannerTime"> {{plannerEvent.time}} </span>
+      <p class = "plannerName"> {{plannerEvent.name}} </span>
+      <div class = "deleteFinishContainer">
+        <button type = "button" class = "deletePlanner" id = "deletePlanner{{plannerEvent.id}}" ng-click = "deleteButtonClicked()"> Delete </button>
+        <button type = "button" class = "finishPlanner" id = "finishPlanner{{plannerEvent.id}}" ng-click = "finishButtonClicked()"> Been There Done That </button>
+      </div>
+    </div>
+  </div>
+</div>
