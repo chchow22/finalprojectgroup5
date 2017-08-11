@@ -4,6 +4,11 @@ app.config(function($routeProvider) {
 
   $routeProvider
 
+  .when("/welcome", {
+    controller: "introCtrl",
+    templateUrl: "../partials/welcome.html"
+  })
+
   .when("/home", {
     controller: "homeCtrl",
     templateUrl: "../partials/home.html"
@@ -20,7 +25,7 @@ app.config(function($routeProvider) {
   })
 
   .otherwise ({
-    redirectTo: "/home"
+    redirectTo: "/welcome"
   });
 
 });
