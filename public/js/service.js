@@ -283,6 +283,7 @@ function quicksortBasic(array) {
       method: 'GET'
     }).then(function(response) {
       eventsFromDB = response.data;
+      console.log(response);
     });
     return p;
   };
@@ -293,6 +294,7 @@ function quicksortBasic(array) {
       method: 'GET'
     }).then(function(response) {
       photosFromDB = response.data;
+      console.log(photosFromDB);
     });
     return p;
   };
