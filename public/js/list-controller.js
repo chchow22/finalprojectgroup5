@@ -10,7 +10,9 @@ app.controller('listCtrl', function($scope, miFactory) {
     miFactory.getMoreBucketEvents();
   }
 
-
+  $scope.savePlannerIndex = function() {
+    miFactory.setPlannerIndex(this.$index);
+  }
   $scope.addButtonClicked = function (date, time) {
     miFactory.addPlanner(this.$index, date, time);
   }
@@ -22,5 +24,4 @@ app.controller('listCtrl', function($scope, miFactory) {
   $scope.finishButtonClicked = function() {
     miFactory.finishPlanner(this.$index);
   }
-
 });

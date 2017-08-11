@@ -4,7 +4,7 @@
     <div class = "titleAndButton">
       <span class = "bucketEventName"> {{bucketEvent.name}} </span>
       <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click = "savePlannerIndex()">
   Add to Planner
 </button>
 
@@ -19,6 +19,7 @@
       <div class="modal-body">
         <input type="text" placeholder="Date of event" ng-model='event_date'>
         <input type="text" placeholder="Time of event" ng-model='event_time'>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

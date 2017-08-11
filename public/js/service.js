@@ -10,11 +10,15 @@ app.factory('miFactory', function($http) {
   var randomPhotoIDs = [];
   var likedPhotos = [];
 
-  // List Page Variables
+  // List Page & Planner Page Variables
   var likedEvents = [];
   var bucketEvents = [];
 
   var plannerEvents = [];
+  var plannerIndex = 0;
+
+  // Profile Page Variables
+  var beenThereEvents = [];
 
   return {
     initialSetupHome: initialSetupHome,
@@ -31,8 +35,10 @@ app.factory('miFactory', function($http) {
     addPlanner: addPlanner,
     deletePlanner: deletePlanner,
     finishPlanner: finishPlanner,
+    setPlannerIndex: setPlannerIndex,
 
-    getPhotos: getPhotos
+    getPhotos: getPhotos,
+    quicksortBasic: quicksortBasic
   }
 
 
@@ -111,7 +117,7 @@ app.factory('miFactory', function($http) {
     likedPhotos.splice(removeIndex, 1);
   }
 
-  // Transition Functions
+  // Transition Functions ------------------------------------------------------
   function homeListTransition() {
     convertPhotosToEvents();
     eventsSorter();
@@ -134,13 +140,41 @@ app.factory('miFactory', function($http) {
   function eventsSorter() {
     likedEvents = quicksortBasic(likedEvents);
     console.log("sorted Events", likedEvents);
+    var oneRep = [];
+    var twoRep = [];
+    var threeRep = [];
+    var fourRep = [];
+    var fiveRep = [];
 
-    for(var i = likedEvents.length - 2; i >= 0; i--) {
-      if (likedEvents[i] == likedEvents[i + 1]) {
-        likedEvents.splice(i + 1, 1);
+    var rep = 1;
+    for (var x = 1; x < likedEvents.length; x++) {
+      if (likedEvents[x] == likedEvents[x - 1]) {
+        rep += 1;
+      }
+      else {
+        if (rep == 1) {
+          oneRep.push(likedEvents[x - 1]);
+        }
+        if (rep == 2) {
+          twoRep.push(likedEvents[x - 1]);
+        }
+        if (rep == 3) {
+          threeRep.push(likedEvents[x - 1]);
+        }
+        if (rep == 4) {
+          fourRep.push(likedEvents[x - 1]);
+        }
+        if (rep == 5) {
+          fiveRep.push(likedEvents[x - 1]);
+        }
+        rep = 1;
       }
     }
 
+    likedEvents = fiveRep.concat(fourRep,threeRep,twoRep,oneRep);
+    console.log("reps", fiveRep, fourRep, threeRep, twoRep, oneRep);
+
+    likedEvents = deleteDuplicates(likedEvents);
     console.log("deleted duplicates", likedEvents);
 
     bucketEvents = [];
@@ -153,21 +187,29 @@ app.factory('miFactory', function($http) {
       }
     }
 
-    //
-    // for (var m = 0; m < bucketEvents.length; m++) {
-    //   bucketEvents[m].images = [];
-    //   for (var n = 0; n < photosFromDB.length; n++) {
-    //     if (photosFromDB[n].event_id == bucketEvents[m].id) {
-    //       bucketEvents[m].images.push(photosFromDB[n].img_url);
-    //     }
-    //   }
-    // }
+
+    for (var m = 0; m < bucketEvents.length; m++) {
+      bucketEvents[m].images = [];
+      for (var n = 0; n < photosFromDB.length; n++) {
+        if (photosFromDB[n].event_id == bucketEvents[m].id) {
+          bucketEvents[m].images.push(photosFromDB[n].img_url);
+        }
+      }
+    }
 
 
   }
 
+  function deleteDuplicates(array) {
+    for(var i = array.length - 2; i >= 0; i--) {
+      if (array[i] == array[i + 1]) {
+        array.splice(i + 1, 1);
+      }
+    }
+    return array;
+  }
 
-  // Sorting Functions
+  // Sorting Functions --------------------------------------------------------
   // basic implementation (pivot is the first element of the array)
 function quicksortBasic(array) {
   if(array.length < 2) {
@@ -189,67 +231,7 @@ function quicksortBasic(array) {
   return quicksortBasic(lesser).concat(pivot, quicksortBasic(greater));
 }
 
-// swap function helper
-function swap(array, i, j) {
-  var temp = array[i];
-  array[i] = array[j];
-  array[j] = temp;
-}
-
-// classic implementation (with Hoare or Lomuto partition scheme, you can comment either one method or the other to see the difference)
-function quicksort(array, left, right) {
-  left = left || 0;
-  right = right || array.length - 1;
-
-  // var pivot = partitionLomuto(array, left, right); // you can play with both partition
-  var pivot = partitionHoare(array, left, right); // you can play with both partition
-
-  if(left < pivot - 1) {
-    quicksort(array, left, pivot - 1);
-  }
-  if(right > pivot) {
-    quicksort(array, pivot, right);
-  }
-  return array;
-}
-// Lomuto partition scheme, it is less efficient than the Hoare partition scheme
-function partitionLomuto(array, left, right) {
-  var pivot = right;
-  var i = left;
-
-  for(var j = left; j < right; j++) {
-    if(array[j] <= array[pivot]) {
-      swap(array, i , j);
-      i = i + 1;
-    }
-  }
-  swap(array, i, j);
-  return i;
-}
-// Hoare partition scheme, it is more efficient than the Lomuto partition scheme because it does three times fewer swaps on average
-function partitionHoare(array, left, right) {
-  var pivot = Math.floor((left + right) / 2 );
-
-  while(left <= right) {
-    while(array[left] < array[pivot]) {
-      left++;
-    }
-    while(array[right] > array[pivot]) {
-      right--;
-    }
-    if(left <= right) {
-      swap(array, left, right);
-      left++;
-      right--;
-    }
-  }
-  return left;
-}
-
-console.log(quicksort(array.slice()));
-
-
-  // List Page Functions
+  // List Page Functions -------------------------------------------------------
 
   function getBucketEvents() {
     return bucketEvents;
@@ -263,11 +245,10 @@ console.log(quicksort(array.slice()));
     return plannerEvents;
   }
 
-  function addPlanner(idString, date, time) {
-    console.log(idString);
+  function addPlanner(date, time) {
     plannerEvents.push({
-      id: bucketEvents[idString].id,
-      name: bucketEvents[idString].name,
+      id: bucketEvents[plannerIndex].id,
+      name: bucketEvents[plannerIndex].name,
       date: date,
       time: time
     });
@@ -275,12 +256,18 @@ console.log(quicksort(array.slice()));
     plannerSorter();
   }
 
+  function setPlannerIndex(idString) {
+    plannerIndex = idString;
+    console.log(plannerIndex);
+  }
+
   function deletePlanner(idString) {
     plannerEvents.splice(idString, 1);
   }
 
   function finishPlanner(idString) {
-    console.log(idString);
+    beenThereEvents.push(plannerEvents[idString]);
+    console.log(beenThereEvents);
 
   }
 
@@ -288,7 +275,7 @@ console.log(quicksort(array.slice()));
 
   }
 
-  // Database Functions
+  // Database Functions ------------------------------------------------------
 
   function getEvents() {
     var p = $http({
