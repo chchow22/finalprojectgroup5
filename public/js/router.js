@@ -14,6 +14,11 @@ app.config(function($routeProvider) {
     templateUrl: "../partials/list.html"
   })
 
+  .when("/planner", {
+    controller: "plannerCtrl",
+    templateUrl: "../partials/planner.html"
+  })
+
   .otherwise ({
     redirectTo: "/home"
   });
