@@ -1,9 +1,11 @@
-<div class="imgContainer">
-  <div class="main" infinite-scroll = "getMoreHomePhotos()" >
-    <home-image> </home-image>
-  </div>
-  <div class="sidebar">
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12" infinite-scroll = "getMoreHomePhotos()">
+      <home-image> </home-image>
+    </div>
+      <input type="button" class="goToTop" value="Top" style="display:none;"/>
+
     <button class='button' type="button" onclick="window.location='/#!/list'" ></button>
-    <input type="button" class="goToTop" value="Top" style="display:none;"/>
   </div>
 </div>

@@ -1,11 +1,9 @@
 var app = angular.module('miModule');
 
 app.controller('homeCtrl', function($scope, $timeout, miFactory) {
-
   // Home Functions/Variables
   $scope.photoSelected = false
   $scope.addOrRemovePhotoFromBucket = function() {
-
     if (this.photoSelected) {
       $scope.addPhotoToBucket(this.$index);
     }
@@ -31,6 +29,7 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
 
 
   //JQuery
+
   $(window).scroll(function() {
     if ($(this).scrollTop() > 200) {
       $('.goToTop').fadeIn();

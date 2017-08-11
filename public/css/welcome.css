@@ -1,0 +1,28 @@
+#welcomeHeader {
+  font-size: 100px;
+  cursor: default;
+}
+.stepOne {
+  text-align: center;
+}
+#imgIcon {
+  width: 320px;
+  filter: none;
+}
+.stepTwo {
+  text-align: center;
+}
+#plannerIcon {
+  width: 220px;
+  height: auto;
+  background-color: #F4AC45;
+  filter: none;
+  border-radius: 15px;
+}
+.stepThree {
+  text-align: center;
+}
+#calendarIcon {
+  width: 320px;
+  filter: none;
+}
