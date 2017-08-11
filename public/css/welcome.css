@@ -26,3 +26,7 @@
   width: 320px;
   filter: none;
 }
+#welcomeBtn {
+  height: 80px;
+  font-size: 30px;
+}
