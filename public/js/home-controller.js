@@ -24,7 +24,9 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   $scope.getMoreHomePhotos = function() {
     miFactory.getMoreHomePhotos();
   };
+
   miFactory.initialSetupHome();
+
   miFactory.getPhotos();
 
 

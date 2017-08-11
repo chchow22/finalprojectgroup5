@@ -39,7 +39,10 @@ app.factory('miFactory', function($http) {
 
   // Home Page Functions
   function initialSetupHome() {
-
+    for (var p = 0; p < homePhotos; p++) {
+      homePhotos.pop();
+      console.log("popped");
+    }
     getPhotos().then(function() {
       randomize(photosFromDB.length);
       for(var i = 0; i <= 8; i++) {
