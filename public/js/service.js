@@ -14,7 +14,7 @@ app.factory('miFactory', function($http) {
 
   // Home Page Variables -------------------------------------------------------
 
-  // Array of IDs of images that are shown on the home page
+  // Array of objects of images that are shown on the home page
   var homePhotos = [];
 
   // "The number of images shown on home page" - 1.
@@ -57,28 +57,44 @@ app.factory('miFactory', function($http) {
     getMoreHomePhotos: getMoreHomePhotos,
     addLikedPhotos: addLikedPhotos,
     removeLikedPhotos: removeLikedPhotos,
+    getLikedPhotos: getLikedPhotos,
 
     homeListTransition: homeListTransition,
 
     getBucketEvents: getBucketEvents,
     getMoreBucketEvents: getMoreBucketEvents,
+
     getPlannerEvents: getPlannerEvents,
+    setPlannerIndex: setPlannerIndex,
     addPlanner: addPlanner,
     deletePlanner: deletePlanner,
-    finishPlanner: finishPlanner,
-    setPlannerIndex: setPlannerIndex
+    finishPlanner: finishPlanner
   }
 
 
 
   // Home Page Functions -------------------------------------------------------
+
+  // Sets up home page
   function initialSetupHome() {
+
+    // Empties the homePhotos array, so we can proceed to add a brand new set
+    // of random images
     for (var p = 0; p < homePhotos; p++) {
       homePhotos.pop();
-      console.log("popped");
     }
+
+    // Performs a get request for images in the database
+    // (image objects are stored in photosFromDB)
     getPhotos().then(function() {
+
+      // Takes the number of photos and randomizes all integers below that number starting
+      // from 1 and store them into the array randomPhotoIDs (see function below)
       randomize(photosFromDB.length);
+
+      // Populates the array homePhotos using the first eight IDs in randomPhotoIDs
+      // The purpose of the double for loop + if statement is to search for the
+      // corresponding image object of the image IDs in randomPhotoIDs
       for(var i = 0; i <= 8; i++) {
         for (var j = 0; j < photosFromDB.length; j++) {
           if (randomPhotoIDs[i] == photosFromDB[j].id) {
@@ -86,71 +102,119 @@ app.factory('miFactory', function($http) {
           }
         }
       }
+
+      // Makes sure that next time we populate homePhotos, it starts from the ninth ID
+      // in randomPhotoIDs
       homePhotosIndex = 8;
 
     });
 
+    // Performs a get request for events in the database
+    // (image objects are stored in eventsFromDB)
     getEvents();
 
   }
 
+  // Takes a number and randomizes all integers below that number starting
+  // from 1 and store them into randomPhotoIDs
   function randomize(count) {
 
+    // pushes first random number from 1 to "count" into randomPhotoIDs
     var randomNum = Math.floor(Math.random()*count + 1);
     randomPhotoIDs.push(randomNum);
 
-
+    // While randomPhotoIDs is not finished getting populated, this loop runs
     while(randomPhotoIDs.length < count) {
+
+      // Generates a number between 1 to "count"
       var randomNum = Math.floor(Math.random()*count + 1);
       var repeat = false;
       for(var j = 0; j < randomPhotoIDs.length; j++) {
         if (randomNum == randomPhotoIDs[j]) {
+          // if the random number generated equals to any number in randomPhotoIDs,
+          // repeat would equal true
           repeat = true;
         }
       }
+
+      // if repeat is false, then push that random number to randomPhotoIDs
       if (!repeat) {
         randomPhotoIDs.push(randomNum);
       }
     }
   }
 
+  // Returns array of objects of images that are shown on the home page
   function getHomePhotos() {
     return homePhotos;
   }
 
+  // This function runs when infinite-scroll is triggered.
+  // Populates the homePhotos array with more image objects
   function getMoreHomePhotos() {
+
+    // Loops through the next 6 integers from where we left off in the
+    // variable homePhotosIndex. These integers are used as indices to
+    // extract the next six random IDs from randomPhotoIDs.
+    // The double for loop and if statement searches for the corresponding
+    // image object with these random IDs.
     for(var i = homePhotosIndex + 1; i <= homePhotosIndex + 6; i++) {
+
+      // Loops through ALL the image objects
       for (var j = 0; j < photosFromDB.length; j++) {
 
         if (randomPhotoIDs[i] == photosFromDB[j].id) {
+          // Adds the image object to homePhotos when the correct one is found
           homePhotos.push(photosFromDB[j]);
         }
       }
     }
+
+    // Increments homePhotosIndex by 6 so next time we would start looping from
+    // the correct index
     homePhotosIndex += 6;
   }
 
+  // The parameter index is the index of the selected image in the home page
+  // We can get the ID of that image at that index with randomPhotoIDs because
+  // we populated the home page with images using the IDs in randomPhotoIDs
   function addLikedPhotos(index) {
+    // Adds the ID of the selected image to likedPhotos array
     likedPhotos.push(randomPhotoIDs[index]);
   }
 
+  // See the function above for explanation of "index"
   function removeLikedPhotos(index) {
     var removeIndex;
 
+    // Loops through all the IDs of images that are liked/selected
     for (var i = 0; i < likedPhotos.length; i++) {
+
+      // Searches for the index inside likedPhotos that we want to delete
       if (randomPhotoIDs[index] == likedPhotos[i]) {
         removeIndex = i;
       }
     }
+
+    // Removes the photo ID from likedPhotos
     likedPhotos.splice(removeIndex, 1);
   }
 
+  // Returns the array of IDs of selected/liked photos
+  // Can be used in home page to show how many images are liked
+  function getLikedPhotos() {
+    return likedPhotos;
+  }
+
   // Home-List Transition Functions --------------------------------------------
+
+  // Executes when the list icon is clicked on in the home page
   function homeListTransition() {
     convertPhotosToEvents();
     eventsSorter();
   }
 
+  // Converts the array of liked photos IDs into event IDs
   function convertPhotosToEvents() {
     console.log("photos", likedPhotos);
     for(var i = 0; i < likedPhotos.length; i++) {
