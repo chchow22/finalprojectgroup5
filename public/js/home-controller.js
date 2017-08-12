@@ -2,7 +2,11 @@ var app = angular.module('miModule');
 
 app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   // Home Functions/Variables
+
+  // This boolean represents the selected/unselected state of photos in the home page
   $scope.photoSelected = false
+
+  // This function is called whenever a photo is clicked in the home page (by ng-click)
   $scope.addOrRemovePhotoFromBucket = function() {
     if (this.photoSelected) {
       $scope.addPhotoToBucket(this.$index);
@@ -11,25 +15,35 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
       $scope.removePhotoFromBucket(this.$index);
     }
   }
+
+  // This function runs when photo is selected (see below for deselection)
   $scope.addPhotoToBucket = function(index) {
     miFactory.addLikedPhotos(index);
   }
+
+  // This function runs when photo is deselected
   $scope.removePhotoFromBucket = function(index) {
     miFactory.removeLikedPhotos(index);
   }
 
+  // This is the array that stores image OBJECTS that are currently displayed in the home page
+  // The image objects contain the id, the image URL, and the foreign key event ID
   $scope.homePhotos = miFactory.getHomePhotos();
+
+  // This function runs when the home page loads.
+  // This function runs only once per refresh of the home page.
+  miFactory.initialSetupHome();
+
+  // This function runs when infinite-scroll is triggered.
   $scope.getMoreHomePhotos = function() {
     miFactory.getMoreHomePhotos();
   };
 
-  miFactory.initialSetupHome();
-
-  miFactory.getPhotos();
-
 
   //JQuery
 
+  // When home page is scrolled, jquery checks if the distance from the top is more than 200
+  // If more than 200, the "go back to top button" shows, otherwise it would hide
   $(window).scroll(function() {
     if ($(this).scrollTop() > 200) {
       $('.goToTop').fadeIn();
@@ -38,6 +52,7 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
     }
   });
 
+  // When "go back to top button" is clicked, the page scrolls back to the top in 1000 milliseconds
   $('.goToTop').click(function() {
     $("html, body").animate({
       scrollTop: 0

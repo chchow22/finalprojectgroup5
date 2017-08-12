@@ -1,50 +1,50 @@
-<header onclick = "window.location='/#!/welcome'; window.location.reload()" >
+<header onclick="window.location='/#!/welcome'; window.location.reload()">
   <h1>Wanderlist</h1>
 </header>
 
-<div id = "bucketContainer" infinite-scroll = "getMoreBucketEvents()">
-  <div class = "bucketEvents" ng-repeat = "bucketEvent in bucketEvents">
+<div id="bucketContainer">
+  <div class="bucketEvents" ng-repeat="bucketEvent in bucketEvents">
 
-    <div class = "titleAndButton">
-      <span class = "bucketEventName"> {{bucketEvent.name}} </span>
+    <div class="titleAndButton">
+      <span class="bucketEventName"> {{bucketEvent.name}} </span>
       <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg firstAddToPlannerButton"data-toggle="modal" data-target="#myModal" ng-click = "savePlannerIndex()">
-  Add to Planner
-</button>
+      <button type="button" class="btn btn-primary btn-lg firstAddToPlannerButton" data-toggle="modal" data-target="#myModal" ng-click="savePlannerIndex()">
+        Add to Planner
+      </button>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Set Date and Time</h4>
-      </div>
-      <div class="modal-body">
-        <input type="text" placeholder="Date of event" ng-model='event_date'>
-        <input type="text" placeholder="Time of event" ng-model='event_time'>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Set Date and Time</h4>
+            </div>
+            <div class="modal-body">
+              <input type="text" placeholder="Date of event" ng-model='event_date'>
+              <input type="text" placeholder="Time of event" ng-model='event_time'>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type = "button" class = "addToPlannerButton" id = "addPlanner{{bucketEvent.id}}" ng-click = "addButtonClicked(event_date, event_time)"> Add to Planner </button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="addToPlannerButton" id="addPlanner{{bucketEvent.id}}" ng-click="addButtonClicked(event_date, event_time)"> Add to Planner </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
 
-    <span class = "bucketEventCategory"> {{bucketEvent.category}} </span>
-    <span class = "bucketEventPrice"> Price: {{bucketEvent.price}} </span>
-    <p class = "bucketEventDescription"> {{bucketEvent.description}} </p>
-    <div class = "fourImagesContainer">
-      <img class = "bucketImages" src = {{bucketEvent.img1}}>
-      <img class = "bucketImages" src = {{bucketEvent.img2}}>
-      <img class = "bucketImages" src = {{bucketEvent.img3}}>
-      <img class = "bucketImages" src = {{bucketEvent.img4}}>
+    <span class="bucketEventCategory"> {{bucketEvent.category}} </span>
+    <span class="bucketEventPrice"> Price: {{bucketEvent.price}} </span>
+    <p class="bucketEventDescription"> {{bucketEvent.description}} </p>
+    <div class="fourImagesContainer">
+      <img class="bucketImages" src={ {bucketEvent.img1}}>
+      <img class="bucketImages" src={ {bucketEvent.img2}}>
+      <img class="bucketImages" src={ {bucketEvent.img3}}>
+      <img class="bucketImages" src={ {bucketEvent.img4}}>
     </div>
-    <span class = "bucketEventPhone"> {{bucketEvent.phone}} </span>
-    <span class = "bucketEventAddress"> {{bucketEvent.address}} </span>
+    <span class="bucketEventPhone"> {{bucketEvent.phone}} </span>
+    <span class="bucketEventAddress"> {{bucketEvent.address}} </span>
 
   </div>
 </div>

@@ -1,27 +1,56 @@
 var app = angular.module('miModule');
 
 app.factory('miFactory', function($http) {
-  // Database Variables
+  // Database Variables --------------------------------------------------------
+
+  // Stores ALL event objects from the events table in the database
+  // Event objects contain id, name, price, category, description, four image URLs,
+  // address, phone number, and website
   var eventsFromDB;
+
+  // Stores ALL image objects from the events table in the database
+  // Event objects contain id, image URL, and the foreign key of event ID
   var photosFromDB;
 
-  // Home Page Variables
+  // Home Page Variables -------------------------------------------------------
+
+  // Array of IDs of images that are shown on the home page
   var homePhotos = [];
-  var homePhotosIndex = 0;
+
+  // "The number of images shown on home page" - 1.
+  var homePhotosIndex;
+
+  // Array of randomized image IDs
   var randomPhotoIDs = [];
+
+  // Array of IDs of images that are selected
   var likedPhotos = [];
 
-  // List Page Variables
+  // List Page Variables -------------------------------------------------------
+
+  // Array of IDs of events that are selected
   var likedEvents = [];
+
+  // Array of objects of events that are displayed on the page
   var bucketEvents = [];
 
-  // Planner Page Variables
+  // Planner Page Variables ----------------------------------------------------
+
+  // Array of planner objects. Objects contain event name, event ID, data, and time
   var plannerEvents = [];
+
+  // Variable that saves the planner event index when "add to planner" is clicked
+  // on the page
   var plannerIndex;
 
-  // Profile Page Variables
+  // Profile Page Variables ----------------------------------------------------
+
+  // Array of objects of planner events that have been saved to profile that
+  // have been "been there done that" by the user
+  // Objects contain event name, event ID, data, and time
   var beenThereEvents = [];
 
+  // Returns functions that should be accessible from other files
   return {
     initialSetupHome: initialSetupHome,
     getHomePhotos: getHomePhotos,
@@ -37,15 +66,12 @@ app.factory('miFactory', function($http) {
     addPlanner: addPlanner,
     deletePlanner: deletePlanner,
     finishPlanner: finishPlanner,
-    setPlannerIndex: setPlannerIndex,
-
-    getPhotos: getPhotos,
-    quicksortBasic: quicksortBasic
+    setPlannerIndex: setPlannerIndex
   }
 
 
 
-  // Home Page Functions
+  // Home Page Functions -------------------------------------------------------
   function initialSetupHome() {
     for (var p = 0; p < homePhotos; p++) {
       homePhotos.pop();
@@ -119,14 +145,13 @@ app.factory('miFactory', function($http) {
     likedPhotos.splice(removeIndex, 1);
   }
 
-  // Transition Functions ------------------------------------------------------
+  // Home-List Transition Functions --------------------------------------------
   function homeListTransition() {
     convertPhotosToEvents();
     eventsSorter();
   }
 
   function convertPhotosToEvents() {
-    likedEvents = [];
     console.log("photos", likedPhotos);
     for(var i = 0; i < likedPhotos.length; i++) {
       for(var j = 0; j < photosFromDB.length; j++) {
@@ -205,17 +230,6 @@ app.factory('miFactory', function($http) {
       }
     }
 
-
-    for (var m = 0; m < bucketEvents.length; m++) {
-      bucketEvents[m].images = [];
-      for (var n = 0; n < photosFromDB.length; n++) {
-        if (photosFromDB[n].event_id == bucketEvents[m].id) {
-          bucketEvents[m].images.push(photosFromDB[n].img_url);
-        }
-      }
-    }
-
-
   }
 
   function deleteDuplicates(array) {
@@ -227,8 +241,7 @@ app.factory('miFactory', function($http) {
     return array;
   }
 
-  // Sorting Functions --------------------------------------------------------
-  // basic implementation (pivot is the first element of the array)
+  // Quick sort where pivot is always the first element of the array
 function quicksortBasic(array) {
   if(array.length < 2) {
     return array;
@@ -263,6 +276,11 @@ function quicksortBasic(array) {
     return plannerEvents;
   }
 
+  function setPlannerIndex(idString) {
+    plannerIndex = idString;
+    console.log(plannerIndex);
+  }
+
   function addPlanner(date, time) {
     plannerEvents.push({
       id: bucketEvents[plannerIndex].id,
@@ -274,11 +292,7 @@ function quicksortBasic(array) {
     plannerSorter();
   }
 
-  function setPlannerIndex(idString) {
-    plannerIndex = idString;
-    console.log(plannerIndex);
-  }
-
+  // Planner Page Functions ----------------------------------------------------
   function deletePlanner(idString) {
     plannerEvents.splice(idString, 1);
   }
