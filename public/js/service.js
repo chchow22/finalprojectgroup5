@@ -1,21 +1,23 @@
 var app = angular.module('miModule');
 
 app.factory('miFactory', function($http) {
-  // Home Page Variables
+  // Database Variables
   var eventsFromDB;
   var photosFromDB;
 
+  // Home Page Variables
   var homePhotos = [];
   var homePhotosIndex = 0;
   var randomPhotoIDs = [];
   var likedPhotos = [];
 
-  // List Page & Planner Page Variables
+  // List Page Variables
   var likedEvents = [];
   var bucketEvents = [];
 
+  // Planner Page Variables
   var plannerEvents = [];
-  var plannerIndex = 0;
+  var plannerIndex;
 
   // Profile Page Variables
   var beenThereEvents = [];
@@ -144,35 +146,51 @@ app.factory('miFactory', function($http) {
     var twoRep = [];
     var threeRep = [];
     var fourRep = [];
-    var fiveRep = [];
 
     var rep = 1;
+
     for (var x = 1; x < likedEvents.length; x++) {
-      if (likedEvents[x] == likedEvents[x - 1]) {
-        rep += 1;
-      }
-      else {
-        if (rep == 1) {
-          oneRep.push(likedEvents[x - 1]);
+
+        if (likedEvents[x] == likedEvents[x - 1]) {
+          rep += 1;
         }
-        if (rep == 2) {
-          twoRep.push(likedEvents[x - 1]);
+        else {
+          if (rep == 1) {
+            oneRep.push(likedEvents[x - 1]);
+          }
+          if (rep == 2) {
+            twoRep.push(likedEvents[x - 1]);
+          }
+          if (rep == 3) {
+            threeRep.push(likedEvents[x - 1]);
+          }
+          if (rep == 4) {
+            fourRep.push(likedEvents[x - 1]);
+          }
+          rep = 1;
         }
-        if (rep == 3) {
-          threeRep.push(likedEvents[x - 1]);
+
+        if (x == likedEvents.length - 1) {
+          if (likedEvents[x] == likedEvents[x - 1]) {
+            rep += 1;
+          }
+          if (rep == 1) {
+            oneRep.push(likedEvents[x]);
+          }
+          if (rep == 2) {
+            twoRep.push(likedEvents[x]);
+          }
+          if (rep == 3) {
+            threeRep.push(likedEvents[x]);
+          }
+          if (rep == 4) {
+            fourRep.push(likedEvents[x]);
+          }
         }
-        if (rep == 4) {
-          fourRep.push(likedEvents[x - 1]);
-        }
-        if (rep == 5) {
-          fiveRep.push(likedEvents[x - 1]);
-        }
-        rep = 1;
-      }
     }
 
-    likedEvents = fiveRep.concat(fourRep,threeRep,twoRep,oneRep);
-    console.log("reps", fiveRep, fourRep, threeRep, twoRep, oneRep);
+    likedEvents = fourRep.concat(threeRep,twoRep,oneRep);
+    console.log("reps", fourRep, threeRep, twoRep, oneRep);
 
     likedEvents = deleteDuplicates(likedEvents);
     console.log("deleted duplicates", likedEvents);
