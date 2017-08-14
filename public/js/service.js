@@ -364,12 +364,11 @@ function quicksortBasic(array) {
   }
 
   // Makes the planner object and pushes it to plannerEvents
-  function addPlanner(date, time) {
+  function addPlanner(dateTime) {
     plannerEvents.push({
       id: bucketEvents[plannerIndex].id,
       name: bucketEvents[plannerIndex].name,
-      date: date,
-      time: time
+      dateTime: dateTime
     });
     plannerSorter();
   }
@@ -390,17 +389,34 @@ function quicksortBasic(array) {
 
   // Sorts planner events by date and time
   function plannerSorter() {
+    console.log(plannerEvents);
+
     for(var t = 0; t < plannerEvents.length; t++) {
-      var year;
-      var month;
-      var day;
-      var hour;
-      var minute;
-      plannerEvents[t].priorityNumber = minute + hour * 100 + day * 10000 + month * 1000000 + year * 100000000;
+      var tenth = 0;
+      if (plannerEvents[t].dateTime[13] == ":") {
+        tenth = 1;
+      }
+      var month = parseInt(plannerEvents[t].dateTime.substring(0,2));
+      var day = parseInt(plannerEvents[t].dateTime.substring(3,5));
+      var year = parseInt(plannerEvents[t].dateTime.substring(6,10));
+      var hour = parseInt(plannerEvents[t].dateTime.substring(11,12 + tenth));
+      var minute = parseInt(plannerEvents[t].dateTime.substring(13 + tenth,15 + tenth));
+      var noon;
+      if (plannerEvents[t].dateTime.substring(16 + tenth, 18 + tenth) == "AM") {
+        noon = 0;
+        console.log("morning");
+      }
+      else {
+        noon = 12;
+        console.log("afternoon");
+      }
+
+      plannerEvents[t].priorityNumber = minute + hour * 100 + noon * 100 + day * 10000 + month * 1000000 + year * 100000000;
+      console.log(plannerEvents[t].priorityNumber);
     }
-    plannerEvents.sort(function(a, b) {r
+    plannerEvents.sort(function(a, b) {
       return a.priorityNumber - b.priorityNumber;
-    })
+    });
 
   }
 
