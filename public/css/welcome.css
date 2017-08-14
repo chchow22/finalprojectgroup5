@@ -27,6 +27,18 @@
   filter: none;
 }
 #welcomeBtn {
+  margin-top: 50px;
   height: 80px;
   font-size: 30px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #229954;
+  border: none;
+  color: black;
+}
+#welcomeBtn:hover {
+  background-color: #145A32;
+}
+.welcome {
+  text-align: center;
 }
