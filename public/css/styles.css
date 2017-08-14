@@ -12,26 +12,22 @@ h1 {
 }
 img {
   display: inline-block;
-  filter: grayscale(100%);
   margin: 10px;
-  color: rgba(0, 0, 0, 0.9);
   border-radius: 10px;
 }
 .button {
   height: 70px;
   width: 60px;
-  background-image: url(../images/planner.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   position: fixed;
   top: 7px;
   right: 10px;
   z-index: 2;
   outline: none;
   border-radius: 5px;
-  animation: fade-in 3s 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   cursor: pointer;
+}
+#listIcon {
+  font-size: 40px;
 }
 .goToTop {
   position: fixed;

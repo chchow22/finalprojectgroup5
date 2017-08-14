@@ -54,13 +54,13 @@
   font-size: 30px;
   padding: 15px;
   border-radius: 10px;
-  background-color: #006BFD;
-  box-shadow: 0px 3px 3px 3px; 
+  background-color: #0044A1;
+  box-shadow: 0px 1px 2px 2px black;
   border: none;
-  color: black;
+  color: white;
 }
 #welcomeBtn:hover {
-  background-color: #145A32;
+  filter: opacity(.8);
 }
 .welcome {
   text-align: center;
