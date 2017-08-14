@@ -1,15 +1,15 @@
-<header onclick="window.location='/#!/home'">
+<header>
   <h1>Wanderlist</h1>
 </header>
 
 <h2 class='steps'>Step 1: Click on photos you like</h2>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-12 imageContainer" infinite-scroll="getMoreHomePhotos()">
+    <div class="col-lg-12 imageContainer">
       <home-image> </home-image>
     </div>
   </div>
 </div>
-<button type="button" class='button' onclick="window.location='/#!/list'"><span class='glyphicon glyphicon-list' id='listIcon'></span></button>
-<button class='calButton' type="button" onclick="window.location='/#!/planner'"><span class='glyphicon glyphicon-calendar' id='calIcon'></span></button>
+<button type="button" class='leftIcon' onclick="window.location='/#!/welcome'"><span class='glyphicon glyphicon-hand-left'></span></button>
+<button type="button" class='rightIcon' onclick="window.location='/#!/list'"><span class='glyphicon glyphicon-list'></span></button>
 <input type="button" class="goToTop" value="Top" style="display:none;" />
