@@ -274,7 +274,7 @@ app.factory('miFactory', function($http) {
           if (rep == 3) {
             threeRep.push(likedEvents[x - 1]);
           }
-          if (rep == 4) {
+          if (rep >= 4) {
             fourRep.push(likedEvents[x - 1]);
           }
           rep = 1;
@@ -295,7 +295,7 @@ app.factory('miFactory', function($http) {
           if (rep == 3) {
             threeRep.push(likedEvents[x]);
           }
-          if (rep == 4) {
+          if (rep >= 4) {
             fourRep.push(likedEvents[x]);
           }
         }
