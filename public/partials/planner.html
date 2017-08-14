@@ -1,4 +1,4 @@
-<header onclick="window.location='/#!/list'; window.location.reload()">
+<header onclick="window.location='/#!/list'">
   <h1>Wanderlist</h1>
 </header>
 
@@ -6,8 +6,7 @@
   <div id = "plannerInnerContainer">
     <h3 id = "plannerTitle"> Planner </h3>
     <div class = "plannerEvents" ng-repeat = "plannerEvent in plannerEvents">
-      <span type = "text" class = "plannerDate"> {{plannerEvent.date}} </span>
-      <span type = "text" class = "plannerTime"> {{plannerEvent.time}} </span>
+      <span type = "text" class = "plannerDate"> {{plannerEvent.dateTime}} </span>
       <p class = "plannerName"> {{plannerEvent.name}} </span>
       <div class = "deleteFinishContainer">
         <button type = "button" class = "deletePlanner" id = "deletePlanner{{plannerEvent.id}}" ng-click = "deleteButtonClicked()"> Delete </button>

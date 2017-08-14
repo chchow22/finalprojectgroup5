@@ -20,7 +20,9 @@ app.controller('listCtrl', function($scope, miFactory) {
 
   // Function that triggers when "Add to Planner" is clicked (not the button on the page, but the one on the modal)
   // This function passes the date and time to service.js
-  $scope.addButtonClicked = function (date, time) {
-    miFactory.addPlanner(date, time);
+  $scope.addButtonClicked = function () {
+    var dateTime = $("#dateTimeInput").val();
+    miFactory.addPlanner(dateTime);
+    console.log(dateTime);
   }
 });
