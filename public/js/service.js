@@ -91,26 +91,42 @@ app.factory('miFactory', function($http) {
       // from 1 and store them into the array randomPhotoIDs (see function below)
       randomize(photosFromDB.length);
 
-      // Populates the array homePhotos using the first eleven IDs in randomPhotoIDs
-      // The purpose of the double for loop + if statement is to search for the
-      // corresponding image object of the image IDs in randomPhotoIDs
-      for(var i = 0; i <= 11; i++) {
-        for (var j = 0; j < photosFromDB.length; j++) {
-          if (randomPhotoIDs[i] == photosFromDB[j].id) {
-            homePhotos.push(photosFromDB[j]);
+      getEvents().then(function() {
+        // Performs a get request for events in the database
+        // (image objects are stored in eventsFromDB)
+        console.log("Photo",photosFromDB);
+        console.log("Event", eventsFromDB);
+        for(var i = 0; i < photosFromDB.length; i++) {
+          for(var j = 0; j < eventsFromDB.length; j++) {
+            if (photosFromDB[i].event_id == eventsFromDB[j].id) {
+              console.log("City", eventsFromDB[j].city);
+              photosFromDB[i].city = eventsFromDB[j].city;
+            }
           }
         }
-      }
 
-      // Makes sure that next time we populate homePhotos, it starts from the eleventh ID
-      // in randomPhotoIDs
-      homePhotosIndex = 11;
+        console.log("Photo",photosFromDB);
+        // Populates the array homePhotos using the first eleven IDs in randomPhotoIDs
+        // The purpose of the double for loop + if statement is to search for the
+        // corresponding image object of the image IDs in randomPhotoIDs
+        for(var i = 0; i <= 11; i++) {
+          for (var j = 0; j < photosFromDB.length; j++) {
+            if (randomPhotoIDs[i] == photosFromDB[j].id) {
+              homePhotos.push(photosFromDB[j]);
+            }
+          }
+        }
+        console.log(homePhotos);
+        // Makes sure that next time we populate homePhotos, it starts from the eleventh ID
+        // in randomPhotoIDs
+        homePhotosIndex = 11;
+      });
 
     });
 
-    // Performs a get request for events in the database
-    // (image objects are stored in eventsFromDB)
-    getEvents();
+
+
+
 
   }
 
@@ -430,7 +446,6 @@ function quicksortBasic(array) {
       method: 'GET'
     }).then(function(response) {
       eventsFromDB = response.data;
-      console.log(response);
     });
     return p;
   };
@@ -442,7 +457,6 @@ function quicksortBasic(array) {
       method: 'GET'
     }).then(function(response) {
       photosFromDB = response.data;
-      console.log(photosFromDB);
     });
     return p;
   };

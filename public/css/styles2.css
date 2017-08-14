@@ -49,7 +49,7 @@
   margin-top: 5px;
   margin-left: 8px;
   margin-bottom: 0;
-  color: gray;
+  color: white;
 }
 
 .plannerTime {
@@ -58,7 +58,7 @@
   margin-right: 8px;
   margin-bottom: 0;
   float: right;
-  color: gray;
+  color: white;
 }
 
 .plannerName {
@@ -67,7 +67,7 @@
   margin-right: 8px;
   margin-bottom: 0;
   font-size: 20px;
-  color: gray;
+  color: white;
 }
 
 .deleteFinishContainer {
@@ -149,20 +149,20 @@
   margin-left: 10px;
   font-size: 40px;
   margin-bottom: 0;
-  color: gray;
+  color: white;
 }
 
 .bucketEventCategory {
   font-size: 18px;
   margin-left: 10px;
-  color: gray;
+  color: white;
 }
 
 .bucketEventPrice {
   font-size: 18px;
   margin-right: 10px;
   float: right;
-  color: gray;
+  color: white;
 }
 
 .bucketEventDescription {
@@ -171,20 +171,21 @@
   margin-right: 10px;
   margin-top: 4px;
   margin-bottom: 0;
+  color: white;
 }
 
 .bucketEventPhone {
   font-size: 18px;
   margin: 0;
   margin-left: 10px;
-  color: gray;
+  color: white;
 }
 
 .bucketEventAddress {
   font-size: 18px;
   margin: 0;
   margin-left: 10px;
-  color: gray;
+  color: white;
   float: right;
   margin-right: 10px;
 }
@@ -206,20 +207,4 @@
   margin-bottom: 0;
   filter: grayscale(0%);
   border-radius: 10px;
-}
-
-.calButton {
-  height: 70px;
-  width: 60px;
-  background-image: url(../images/calendar.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: fixed;
-  top: 7px;
-  right: 10px;
-  z-index: 2;
-  outline: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
