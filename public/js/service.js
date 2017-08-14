@@ -398,12 +398,11 @@ function quicksortBasic(array) {
       var minute;
       plannerEvents[t].priorityNumber = minute + hour * 100 + day * 10000 + month * 1000000 + year * 100000000;
     }
-    plannerEvents.sort(function(a, b) {
+    plannerEvents.sort(function(a, b) {r
       return a.priorityNumber - b.priorityNumber;
     })
 
   }
-
 
 
   // Database Functions ------------------------------------------------------
