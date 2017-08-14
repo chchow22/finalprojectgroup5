@@ -4,7 +4,6 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   // Home Functions/Variables
   $scope.numOfSelectedPhotos = miFactory.getLikedPhotos.length;
   $scope.numOfPlannerEvents = miFactory.getPlannerEvents.length;
-  
   // This boolean represents the selected/unselected state of photos in the home page
   $scope.photoSelected = false;
 
@@ -34,7 +33,9 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
 
   // This function runs when the home page loads.
   // This function runs only once per refresh of the home page.
-  miFactory.initialSetupHome();
+
+    miFactory.initialSetupHome();
+
 
   // This function runs when infinite-scroll is triggered.
   $scope.getMoreHomePhotos = function() {
