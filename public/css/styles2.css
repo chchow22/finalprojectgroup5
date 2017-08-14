@@ -205,6 +205,6 @@
   margin-right: 5px;
   margin-top: 0;
   margin-bottom: 0;
-  filter: grayscale(0%);
+  border: 1px solid white;
   border-radius: 10px;
 }

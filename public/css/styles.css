@@ -1,5 +1,10 @@
-body {
-  background-color: #36465d;
+.backgroundImage {
+  margin: 0;
+  border-radius: 0px;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
 }
 h1 {
   color: white;
@@ -18,12 +23,6 @@ h1 {
 .imageContainer {
   margin-top: 30px;
 }
-img {
-  display: inline-block;
-  margin: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
 .imgArticle {
   background-color: white;
   display: inline-block;
@@ -33,6 +32,12 @@ img {
 }
 .imgFooter {
   margin: 10px;
+}
+img {
+  display: inline-block;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 .button {
   height: 70px;
@@ -79,7 +84,7 @@ img {
   background-color: white;
 }
 .selected {
-  background-color: gray;
+  background-color: rgb(244, 212, 66);
 }
 .notSelected {
   background-color: white;
