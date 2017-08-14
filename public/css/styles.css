@@ -28,8 +28,8 @@ img {
   background-repeat: no-repeat;
   background-position: center;
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 7px;
+  right: 10px;
   z-index: 2;
   outline: none;
   border-radius: 5px;
