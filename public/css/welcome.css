@@ -1,30 +1,52 @@
+.welcome {
+  height: 100vh;
+  background-image: url(https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1476842384041-a57a4f124e2e%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax%26s%3D0d4c04aca3574ac74e97f2d150fdb4fc);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.welcome li {
+  list-style: none;
+}
 #welcomeHeader {
   font-size: 100px;
+  color: white;
   cursor: default;
 }
 .stepOne {
+  color: white;
   text-align: center;
 }
 #imgIcon {
-  width: 320px;
-  filter: none;
+  margin: 10px;
+  font-size: 100px;
+  padding: 40px;
+  border: 1px solid white;
+  border-radius: 100%;
+  color: white;
 }
 .stepTwo {
+  color: white;
   text-align: center;
 }
 #plannerIcon {
-  width: 220px;
-  height: auto;
-  background-color: #F4AC45;
-  filter: none;
-  border-radius: 15px;
+  margin: 10px;
+  font-size: 100px;
+  padding: 40px;
+  border: 1px solid white;
+  border-radius: 100%;
+  color: white;
 }
 .stepThree {
   text-align: center;
+  color: white;
 }
-#calendarIcon {
-  width: 320px;
-  filter: none;
+#calendar {
+  margin: 10px;
+  font-size: 100px;
+  padding: 40px;
+  border: 1px solid white;
+  border-radius: 100%;
+  color: white;
 }
 #welcomeBtn {
   margin-top: 50px;
@@ -32,7 +54,8 @@
   font-size: 30px;
   padding: 15px;
   border-radius: 10px;
-  background-color: #229954;
+  background-color: #006BFD;
+  box-shadow: 0px 3px 3px 3px; 
   border: none;
   color: black;
 }
