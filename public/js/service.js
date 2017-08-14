@@ -91,10 +91,10 @@ app.factory('miFactory', function($http) {
       // from 1 and store them into the array randomPhotoIDs (see function below)
       randomize(photosFromDB.length);
 
-      // Populates the array homePhotos using the first eight IDs in randomPhotoIDs
+      // Populates the array homePhotos using the first eleven IDs in randomPhotoIDs
       // The purpose of the double for loop + if statement is to search for the
       // corresponding image object of the image IDs in randomPhotoIDs
-      for(var i = 0; i <= 8; i++) {
+      for(var i = 0; i <= 11; i++) {
         for (var j = 0; j < photosFromDB.length; j++) {
           if (randomPhotoIDs[i] == photosFromDB[j].id) {
             homePhotos.push(photosFromDB[j]);
@@ -102,9 +102,9 @@ app.factory('miFactory', function($http) {
         }
       }
 
-      // Makes sure that next time we populate homePhotos, it starts from the ninth ID
+      // Makes sure that next time we populate homePhotos, it starts from the eleventh ID
       // in randomPhotoIDs
-      homePhotosIndex = 8;
+      homePhotosIndex = 11;
 
     });
 
@@ -152,12 +152,12 @@ app.factory('miFactory', function($http) {
   // Populates the homePhotos array with more image objects
   function getMoreHomePhotos() {
 
-    // Loops through the next 6 integers from where we left off in the
+    // Loops through the next 8 integers from where we left off in the
     // variable homePhotosIndex. These integers are used as indices to
     // extract the next six random IDs from randomPhotoIDs.
     // The double for loop and if statement searches for the corresponding
     // image object with these random IDs.
-    for(var i = homePhotosIndex + 1; i <= homePhotosIndex + 6; i++) {
+    for(var i = homePhotosIndex + 1; i <= homePhotosIndex + 8; i++) {
 
       // Loops through ALL the image objects
       for (var j = 0; j < photosFromDB.length; j++) {
@@ -169,9 +169,9 @@ app.factory('miFactory', function($http) {
       }
     }
 
-    // Increments homePhotosIndex by 6 so next time we would start looping from
+    // Increments homePhotosIndex by 8 so next time we would start looping from
     // the correct index
-    homePhotosIndex += 6;
+    homePhotosIndex += 8;
   }
 
   // The parameter index is the index of the selected image in the home page
@@ -285,6 +285,10 @@ app.factory('miFactory', function($http) {
         }
     }
 
+    if (likedEvents.length == 1) {
+      oneRep.push(likedEvents[0]);
+    }
+
     // Bring the IDs together in the right order
     likedEvents = fourRep.concat(threeRep,twoRep,oneRep);
     console.log("reps", fourRep, threeRep, twoRep, oneRep);
@@ -367,7 +371,6 @@ function quicksortBasic(array) {
       date: date,
       time: time
     });
-    console.log(plannerEvents);
     plannerSorter();
   }
 
@@ -387,8 +390,20 @@ function quicksortBasic(array) {
 
   // Sorts planner events by date and time
   function plannerSorter() {
+    for(var t = 0; t < plannerEvents.length; t++) {
+      var year;
+      var month;
+      var day;
+      var hour;
+      var minute;
+      plannerEvents[t].priorityNumber = minute + hour * 100 + day * 10000 + month * 1000000 + year * 100000000;
+    }
+    plannerEvents.sort(function(a, b) {r
+      return a.priorityNumber - b.priorityNumber;
+    })
 
   }
+
 
   // Database Functions ------------------------------------------------------
 
