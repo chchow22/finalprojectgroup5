@@ -22,29 +22,29 @@
             </div>
             <div class="modal-body">
               <div class="container">
-      <div class="row">
-          <div class='col-sm-6'>
-              <div class="form-group">
-                  <div class='input-group date' id='datetimepicker1'>
-                      <input type= "text" placeholder="Click the calendar button" class="form-control" id = "dateTimeInput"/>
-                      <span class="input-group-addon">
+                <div class="row">
+                  <div class='col-sm-6'>
+                    <div class="form-group">
+                      <div class='input-group date' id='datetimepicker1'>
+                        <input type="text" placeholder="Click the calendar button" class="form-control" id="dateTimeInput" />
+                        <span class="input-group-addon">
                           <span class="glyphicon glyphicon-calendar"></span>
-                      </span>
+                        </span>
+                      </div>
+                    </div>
                   </div>
+                  <script type="text/javascript">
+                    $(function() {
+                      $('#datetimepicker1').datetimepicker();
+                    });
+                  </script>
+                </div>
               </div>
-          </div>
-          <script type="text/javascript">
-              $(function () {
-                  $('#datetimepicker1').datetimepicker();
-              });
-          </script>
-      </div>
-  </div>
 
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="addToPlannerButton" id="addPlanner{{bucketEvent.id}}" ng-click="addButtonClicked()"> Add to Planner </button>
+              <button type="button" class="addToPlannerButton" id="addPlanner{{bucketEvent.id}}" ng-click="addButtonClicked()" data-dismiss="modal"> Add to Planner </button>
             </div>
           </div>
         </div>
