@@ -62,7 +62,6 @@ app.factory('miFactory', function($http) {
     homeListTransition: homeListTransition,
 
     getBucketEvents: getBucketEvents,
-    getMoreBucketEvents: getMoreBucketEvents,
 
     getPlannerEvents: getPlannerEvents,
     setPlannerIndex: setPlannerIndex,
@@ -214,7 +213,8 @@ app.factory('miFactory', function($http) {
     eventsSorter();
   }
 
-  // Converts the array of liked photos IDs into event IDs
+  // Converts the array of liked photos IDs into event IDs and pushes them into
+  // likedEvents
   function convertPhotosToEvents() {
     console.log("photos", likedPhotos);
     for(var i = 0; i < likedPhotos.length; i++) {
@@ -228,9 +228,14 @@ app.factory('miFactory', function($http) {
     console.log("events", likedEvents);
   }
 
+  // Sorts the bucket events so events with most liked images come first
   function eventsSorter() {
+
+    // sorts events by ID in ascending order
     likedEvents = quicksortBasic(likedEvents);
     console.log("sorted Events", likedEvents);
+
+    // e.g. threeRep contains IDs of events that have three liked images etc.
     var oneRep = [];
     var twoRep = [];
     var threeRep = [];
@@ -259,6 +264,8 @@ app.factory('miFactory', function($http) {
           rep = 1;
         }
 
+        // Takes care of the last image, because otherwise that event would never be
+        // added to the array
         if (x == likedEvents.length - 1) {
           if (likedEvents[x] == likedEvents[x - 1]) {
             rep += 1;
@@ -278,14 +285,18 @@ app.factory('miFactory', function($http) {
         }
     }
 
+    // Bring the IDs together in the right order
     likedEvents = fourRep.concat(threeRep,twoRep,oneRep);
     console.log("reps", fourRep, threeRep, twoRep, oneRep);
 
+    // Deletes duplicate event IDs from likedEvents
     likedEvents = deleteDuplicates(likedEvents);
     console.log("deleted duplicates", likedEvents);
 
+    // Empties the bucket events before populating it with event objects
     bucketEvents = [];
 
+    // Populates bucketEvents with event objects
     for(var k = 0; k < likedEvents.length; k++) {
       for(var l = 0; l < eventsFromDB.length; l++) {
         if(likedEvents[k] == eventsFromDB[l].id) {
@@ -296,6 +307,7 @@ app.factory('miFactory', function($http) {
 
   }
 
+  // Deletes all duplicates of an array
   function deleteDuplicates(array) {
     for(var i = array.length - 2; i >= 0; i--) {
       if (array[i] == array[i + 1]) {
@@ -328,23 +340,26 @@ function quicksortBasic(array) {
 
   // List Page Functions -------------------------------------------------------
 
+  // Returns array of objects of events that are displayed on the list page
   function getBucketEvents() {
     return bucketEvents;
   }
 
-  function getMoreBucketEvents() {
-
-  }
-
+  // Returns planner objects
   function getPlannerEvents() {
     return plannerEvents;
   }
 
+  // This function saves the index of the "Add to Planner" button that is clicked in list page
+  // (The button on the page, not the one on the modal)
+  // e.g. if the "add to planner" button of the first bucket list event is clicked,
+  // 0 is passed into setPlannerIndex, and for second, 1 is passed in, and so on...
   function setPlannerIndex(idString) {
     plannerIndex = idString;
     console.log(plannerIndex);
   }
 
+  // Makes the planner object and pushes it to plannerEvents
   function addPlanner(date, time) {
     plannerEvents.push({
       id: bucketEvents[plannerIndex].id,
@@ -357,22 +372,27 @@ function quicksortBasic(array) {
   }
 
   // Planner Page Functions ----------------------------------------------------
+
+  // Deletes a planner object based on given index
   function deletePlanner(idString) {
     plannerEvents.splice(idString, 1);
   }
 
+  // Pushes planner event to been there done that array
   function finishPlanner(idString) {
     beenThereEvents.push(plannerEvents[idString]);
     console.log(beenThereEvents);
 
   }
 
+  // Sorts planner events by date and time
   function plannerSorter() {
 
   }
 
   // Database Functions ------------------------------------------------------
 
+  // Performs get call to the events table in the database
   function getEvents() {
     var p = $http({
       url: '/db/events',
@@ -384,6 +404,7 @@ function quicksortBasic(array) {
     return p;
   };
 
+  // Performs get call to the photos table in the database
   function getPhotos() {
     var p = $http({
       url: '/db/photos',
