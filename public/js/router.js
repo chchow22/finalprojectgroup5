@@ -5,7 +5,6 @@ app.config(function($routeProvider) {
   $routeProvider
 
   .when("/welcome", {
-    controller: "introCtrl",
     templateUrl: "../partials/welcome.html"
   })
 

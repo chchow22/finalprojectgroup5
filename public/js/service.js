@@ -54,7 +54,6 @@ app.factory('miFactory', function($http) {
   return {
     initialSetupHome: initialSetupHome,
     getHomePhotos: getHomePhotos,
-    getMoreHomePhotos: getMoreHomePhotos,
     addLikedPhotos: addLikedPhotos,
     removeLikedPhotos: removeLikedPhotos,
     getLikedPhotos: getLikedPhotos,
@@ -163,32 +162,6 @@ app.factory('miFactory', function($http) {
   // Returns array of objects of images that are shown on the home page
   function getHomePhotos() {
     return homePhotos;
-  }
-
-  // This function runs when infinite-scroll is triggered.
-  // Populates the homePhotos array with more image objects
-  function getMoreHomePhotos() {
-
-    // Loops through the next 8 integers from where we left off in the
-    // variable homePhotosIndex. These integers are used as indices to
-    // extract the next six random IDs from randomPhotoIDs.
-    // The double for loop and if statement searches for the corresponding
-    // image object with these random IDs.
-    for(var i = homePhotosIndex + 1; i <= homePhotosIndex + 8; i++) {
-
-      // Loops through ALL the image objects
-      for (var j = 0; j < photosFromDB.length; j++) {
-
-        if (randomPhotoIDs[i] == photosFromDB[j].id) {
-          // Adds the image object to homePhotos when the correct one is found
-          homePhotos.push(photosFromDB[j]);
-        }
-      }
-    }
-
-    // Increments homePhotosIndex by 8 so next time we would start looping from
-    // the correct index
-    homePhotosIndex += 8;
   }
 
   // The parameter index is the index of the selected image in the home page
