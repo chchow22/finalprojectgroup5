@@ -1,13 +1,10 @@
-/* List */
+/* List & Planner*/
 
 
 #plannerOuterContainer {
-  position: fixed;
-  height: 520px;
-  width: 64%;
-  background-color: rgba(244, 212, 66, 0.3);
-  top: 15.5%;
-  right: 17%;
+  height: 750px;
+  width: 85%;
+  margin: 0 auto;
   margin-top: 4%;
   border-radius: 30px;
 }
@@ -18,7 +15,6 @@
   width: 95%;
   margin: 0 auto;
   top: 1.5%;
-  background-color: white;
   border-radius: 25px;
 }
 
@@ -28,20 +24,22 @@
   padding-top: 5px;
   padding-bottom: 10px;
   font-size: 30px;
-  color: rgba(244, 212, 66, 0.8);
+  color: white;
   font-family: 'Fredericka the Great', cursive;
   font-weight: lighter;
 }
 
 .plannerEvents {
   margin: 0 auto;
-  margin-bottom: 10px;
-  background-color: white;
+  background-color: rgba(244, 244, 244 , 0.4);
   height: auto;
   width: 90%;
-  border: 3px double rgba(244, 212, 66, 0.8);
-  border-radius: 12px;
+  border: 1px solid white;
+  border-left: none;
+  border-right: none;
   padding-bottom: 4px;
+  border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 .plannerDate {
@@ -49,7 +47,6 @@
   margin-top: 5px;
   margin-left: 8px;
   margin-bottom: 0;
-  color: white;
 }
 
 .plannerTime {
@@ -58,7 +55,6 @@
   margin-right: 8px;
   margin-bottom: 0;
   float: right;
-  color: white;
 }
 
 .plannerName {
@@ -67,7 +63,6 @@
   margin-right: 8px;
   margin-bottom: 0;
   font-size: 20px;
-  color: white;
 }
 
 .deleteFinishContainer {
@@ -78,27 +73,15 @@
 }
 
 .deletePlanner {
+  display: block;
   height: 36px;
-  width: 29%;
+  width: 14%;
   border-radius: 8px;
   outline: none;
   color: white;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.7);
   cursor: pointer;
-  margin-left: 4%;
   font-size: 11px;
-}
-
-.finishPlanner {
-  float: right;
-  height: 36px;
-  border-radius: 8px;
-  outline: none;
-  cursor: pointer;
-  width: 60%;
-  font-size: 11px;
-  padding: 2px;
-  margin-right: 4px;
 }
 
 .titleAndButton {
@@ -140,7 +123,7 @@
 
 #bucketContainer {
   height: 100%;
-  width: 95%;
+  width: 75%;
   margin: 0 auto;
 }
 
@@ -174,14 +157,14 @@
   color: white;
 }
 
-.bucketEventPhone {
+.bucketEventAddress {
   font-size: 18px;
   margin: 0;
   margin-left: 10px;
   color: white;
 }
 
-.bucketEventAddress {
+.bucketEventPhone {
   font-size: 18px;
   margin: 0;
   margin-left: 10px;

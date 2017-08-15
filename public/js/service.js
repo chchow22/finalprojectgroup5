@@ -109,7 +109,7 @@ app.factory('miFactory', function($http) {
         // Populates the array homePhotos using the first eleven IDs in randomPhotoIDs
         // The purpose of the double for loop + if statement is to search for the
         // corresponding image object of the image IDs in randomPhotoIDs
-        for(var i = 0; i <= 11; i++) {
+        for(var i = 0; i <= photosFromDB.length - 1; i++) {
           for (var j = 0; j < photosFromDB.length; j++) {
             if (randomPhotoIDs[i] == photosFromDB[j].id) {
               homePhotos.push(photosFromDB[j]);
@@ -119,7 +119,7 @@ app.factory('miFactory', function($http) {
         console.log(homePhotos);
         // Makes sure that next time we populate homePhotos, it starts from the eleventh ID
         // in randomPhotoIDs
-        homePhotosIndex = 11;
+        homePhotosIndex = photosFromDB.length - 1;
       });
 
     });

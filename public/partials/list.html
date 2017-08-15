@@ -1,7 +1,7 @@
-<header onclick="window.location='/#!/home'">
+<header>
   <h1>Wanderlist</h1>
 </header>
-
+<h2 class='steps'>Step 2: Add events to planner</h2>
 <div id="bucketContainer">
   <div class="bucketEvents" ng-repeat="bucketEvent in bucketEvents">
 
@@ -60,11 +60,11 @@
       <img class="bucketImages" src={{bucketEvent.img3}}>
       <img class="bucketImages" src={{bucketEvent.img4}}>
     </div>
-    <span class="bucketEventPhone"> {{bucketEvent.phone}} </span>
     <span class="bucketEventAddress"> {{bucketEvent.address}} </span>
+    <span class="bucketEventPhone"> {{bucketEvent.phone}} </span>
 
   </div>
 </div>
-<button type="button" class='button' onclick="window.location='/#!/list'"><span class='glyphicon glyphicon-list' id='listIcon'></span></button>
-<button class='calButton' type="button" onclick="window.location='/#!/planner'"><span class='glyphicon glyphicon-calendar' id='calIcon'></span></button>
+<button type="button" class='leftIcon' onclick="window.location='/#!/home'"><span class='glyphicon glyphicon-camera'></span></button>
+<button type="button" class='rightIcon' onclick="window.location='/#!/planner'"><span class='glyphicon glyphicon-calendar'></span></button>
 <input type="button" class="goToTop" value="Top" style="display:none;"/>
