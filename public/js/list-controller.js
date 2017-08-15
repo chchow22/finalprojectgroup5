@@ -50,7 +50,4 @@ app.controller('listCtrl', function($scope, miFactory) {
   $('.rightIcon').hide();
   }
 
-
-
-
 });
