@@ -106,6 +106,7 @@ h1 {
   color: white;
   cursor: default;
 }
+
 .selected {
   background-color: rgb(244, 212, 66);
 }
