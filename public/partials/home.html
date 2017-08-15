@@ -11,5 +11,9 @@
   </div>
 </div>
 <button type="button" class='leftIcon' onclick="window.location='/#!/welcome'"><span class='glyphicon glyphicon-hand-left'></span></button>
-<button type="button" class='rightIcon' onclick="window.location='/#!/list'"><span class='glyphicon glyphicon-list'></span></button>
+<button type="button" class='rightIcon' onclick="window.location='/#!/list'">
+  <span class='glyphicon glyphicon-list'></span>
+  <div class = "counter"> {{numOfSelectedPhotos()}}</div>
+</button>
+
 <input type="button" class="goToTop" value="Top" style="display:none;" />

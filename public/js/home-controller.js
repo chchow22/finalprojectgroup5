@@ -2,7 +2,9 @@ var app = angular.module('miModule');
 
 app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   // Home Functions/Variables
-  $scope.numOfSelectedPhotos = miFactory.getLikedPhotos.length;
+  $scope.numOfSelectedPhotos = function() {
+    return miFactory.getLikedPhotos.length;
+  }
   $scope.numOfPlannerEvents = miFactory.getPlannerEvents.length;
   // This boolean represents the selected/unselected state of photos in the home page
   $scope.photoSelected = false;
