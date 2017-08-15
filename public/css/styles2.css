@@ -64,6 +64,8 @@
   font-size: 20px;
 }
 
+
+
 .deleteFinishContainer {
   margin: 0 auto;
   margin-top: 8px;
@@ -200,4 +202,8 @@
     background: none;
     color: white;
     cursor: default;
+  }
+
+  .plannerTextColor {
+    color: black;
   }

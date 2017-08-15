@@ -387,7 +387,11 @@ function quicksortBasic(array) {
     plannerEvents.push({
       id: bucketEvents[plannerIndex].id,
       name: bucketEvents[plannerIndex].name,
-      dateTime: dateTime
+      dateTime: dateTime,
+      address: bucketEvents[plannerIndex].address,
+      phone: bucketEvents[plannerIndex].phone,
+      price: bucketEvents[plannerIndex].price,
+      website: bucketEvents[plannerIndex].website
     });
     plannerSorter();
   }

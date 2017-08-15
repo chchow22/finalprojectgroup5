@@ -6,11 +6,14 @@
  <div id = "plannerInnerContainer">
    <h3 id = "plannerTitle"> Planner </h3>
    <div class = "plannerEvents" ng-repeat = "plannerEvent in plannerEvents">
-     <span type = "text" class = "plannerDate"> {{plannerEvent.dateTime}} </span>
-     <p class = "plannerName"> {{plannerEvent.name}} </p>
+     <span type = "text" class = "plannerDate plannerTextColor"> {{plannerEvent.dateTime}} </span>
+     <span class="bucketEventPrice plannerTextColor"> Price: {{plannerEvent.price}} </span>
+     <p class = "plannerName plannerTextColor"> {{plannerEvent.name}} </p>
      <div class = "deleteFinishContainer">
        <button type = "button" class = "deletePlanner" id = "deletePlanner{{plannerEvent.id}}" ng-click = "deleteButtonClicked()"> Delete </button>
      </div>
+     <span class="bucketEventAddress plannerTextColor"> {{plannerEvent.address}} </span>
+     <span class="bucketEventPhone plannerTextColor"> {{plannerEvent.phone}} </span>
    </div>
  </div>
 </div>
