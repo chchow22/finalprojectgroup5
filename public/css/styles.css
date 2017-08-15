@@ -12,12 +12,13 @@ h1 {
   text-align: center;
   font-family: 'Fredericka the Great', cursive;
   font-weight: lighter;
-  font-size: 80px;
+  font-size: 50px;
   cursor: default;
 }
-.steps {
-  text-align: center;
+.h2Steps {
+  font-size: 15px;
   color: white;
+  text-align: center;
   cursor: default;
 }
 .imageContainer {
@@ -38,14 +39,16 @@ h1 {
 }
 .imageContainer img {
   display: inline-block;
-  margin: 10px;
+  width: 250px;
+  height: 170px;
+  margin: 5px;
   border-radius: 10px;
   cursor: pointer;
 }
 .leftIcon {
-  font-size: 40px;
-  height: 100px;
-  width: 100px;
+  font-size: 20px;
+  height: 50px;
+  width: 50px;
   position: fixed;
   top: 7px;
   left: 10px;
@@ -57,9 +60,9 @@ h1 {
   cursor: pointer;
 }
 .rightIcon {
-  font-size: 40px;
-  height: 100px;
-  width: 100px;
+  font-size: 20px;
+  height: 50px;
+  width: 50px;
   position: fixed;
   top: 7px;
   right: 10px;
@@ -71,9 +74,9 @@ h1 {
   cursor: pointer;
 }
 .goToTop {
-  font-size: 40px;
-  height: 100px;
-  width: 100px;
+  font-size: 20px;
+  height: 50px;
+  width: 50px;
   position: fixed;
   bottom: 7px;
   right: 10px;
@@ -86,13 +89,39 @@ h1 {
   font-family: 'Special Elite', cursive;
   font-weight: bold;
 }
-
-/*.goToTop:hover {
-  background-color: white;
-}*/
 .selected {
   background-color: rgb(244, 212, 66);
 }
 .notSelected {
   background-color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 100px;
+  }
+  .h2Steps {
+    font-size: 30px;
+  }
+  .leftIcon {
+    font-size: 40px;
+    height: 100px;
+    width: 100px;
+  }
+  .rightIcon {
+    font-size: 40px;
+    height: 100px;
+    width: 100px;
+  }
+  .goToTop {
+    font-size: 40px;
+    height: 100px;
+    width: 100px;
+  }
+  .imageContainer img {
+    width: 360px;
+    height: 230px;
+  }
+
+
 }
