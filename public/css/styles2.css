@@ -180,5 +180,14 @@
 }
 
 .counter {
-
-}
+    font-size: 30px;
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    top: 120px;
+    right: 10px;
+    outline: none;
+    background: none;
+    color: white;
+    cursor: default;
+  }
