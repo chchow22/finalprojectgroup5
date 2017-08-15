@@ -62,6 +62,7 @@ app.factory('miFactory', function($http) {
     homeListTransition: homeListTransition,
 
     getBucketEvents: getBucketEvents,
+    deleteBucket: deleteBucket,
 
     getPlannerEvents: getPlannerEvents,
     setPlannerIndex: setPlannerIndex,
@@ -370,6 +371,9 @@ function quicksortBasic(array) {
     return plannerEvents;
   }
 
+  function deleteBucket(index) {
+    bucketEvents.splice(index, 1);
+  }
   // This function saves the index of the "Add to Planner" button that is clicked in list page
   // (The button on the page, not the one on the modal)
   // e.g. if the "add to planner" button of the first bucket list event is clicked,
@@ -393,6 +397,7 @@ function quicksortBasic(array) {
   // Deletes a planner object based on given index
   function deletePlanner(idString) {
     plannerEvents.splice(idString, 1);
+
   }
 
   // Pushes planner event to been there done that array

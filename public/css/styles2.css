@@ -95,6 +95,7 @@
   margin-right: 5px;
 }
 
+
 .bucketEvents {
   width: 96%;
   height: 100%;
@@ -142,6 +143,16 @@
   margin-top: 4px;
   margin-bottom: 0;
   color: white;
+}
+
+.descriptionAndLink {
+  width: 100%;
+
+}
+
+.bucketEventLink {
+  float: right;
+  margin-top: 0;
 }
 
 .bucketEventAddress {
