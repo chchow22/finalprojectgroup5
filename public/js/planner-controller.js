@@ -20,4 +20,23 @@ app.controller("plannerCtrl", function($scope, miFactory) {
     miFactory.finishPlanner(this.$index);
   }
 
+  //JQuery
+
+  // When home page is scrolled, jquery checks if the distance from the top is more than 200
+  // If more than 200, the "go back to top button" shows, otherwise it would hide
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 200) {
+      $('.goToTop').fadeIn();
+    } else {
+      $('.goToTop').fadeOut();
+    }
+  });
+
+  // When "go back to top button" is clicked, the page scrolls back to the top in 1000 milliseconds
+  $('.goToTop').click(function() {
+    $("html, body").animate({
+      scrollTop: 0
+    }, 1000);
+    return false;
+  });
 });

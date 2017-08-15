@@ -14,11 +14,12 @@
       </div>
       <span class = "plannerEvents">
          <span type = "text" class = "plannerDate plannerTextColor"> {{plannerEvent.dateTime}} </span>
-         <span class= "bucketEventPrice plannerTextColor goldColor"> {{plannerEvent.price}} </span>
+         <span class= "plannerTextColor redColor plannerPrice"> {{plannerEvent.price}} </span>
          <p class = "plannerName plannerTextColor"> {{plannerEvent.name}}
          </p>
-         <span class="bucketEventAddress plannerTextColor"> {{plannerEvent.address}} </span>
-         <span class="bucketEventPhone plannerTextColor"> {{plannerEvent.phone}} </span>
+         <span class="plannerAddress plannerTextColor"> {{plannerEvent.address}} </span>
+         <span class="plannerPhone plannerTextColor"> {{plannerEvent.phone}} </span>
+         <a class="mobileVisitLink" href = {{plannerEvent.website}} target="_blank"> Visit Website </a>
          <div class = "deleteFinishContainer">
            <button type = "button" class = "deletePlanner" id = "deletePlanner{{plannerEvent.id}}" ng-click = "deleteButtonClicked()"> Delete </button>
          </div>
@@ -27,7 +28,7 @@
 
         <a class="plannerEventLink" href = {{plannerEvent.website}} target="_blank">
           <div class="glyphicon glyphicon-hand-right goToWebsiteIcon" aria-hidden="true"></div>
-          <p> Visit Website </p>
+          <p class = "visitWebsiteText"> Visit Website </p>
         </a>
       </span>
    </div>
