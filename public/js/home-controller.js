@@ -38,12 +38,6 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
     miFactory.initialSetupHome();
 
 
-  // This function runs when infinite-scroll is triggered.
-  $scope.getMoreHomePhotos = function() {
-    miFactory.getMoreHomePhotos();
-  };
-
-
   //JQuery
 
   // When home page is scrolled, jquery checks if the distance from the top is more than 200
