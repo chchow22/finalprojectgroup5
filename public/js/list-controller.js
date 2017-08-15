@@ -46,8 +46,9 @@ app.controller('listCtrl', function($scope, miFactory) {
     return false;
   });
 
+  if ($scope.numOfPlannerEvents == 0) {
   $('.rightIcon').hide();
-
+  }
 
 
 
