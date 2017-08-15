@@ -77,6 +77,16 @@
   font-size: 40px;
 }
 
+.plannerAddress {
+  margin-left: 8px;
+}
+.plannerPhone {
+  float: right;
+}
+.mobileVisitLink {
+  margin-left: 8px;
+  display: none;
+}
 .deleteFinishContainer {
   margin: 0 auto;
   margin-top: 8px;
@@ -94,13 +104,18 @@
   background-color: rgba(255, 0, 0, 0.7);
   cursor: pointer;
   font-size: 15px;
+  padding-top: 6px;
+}
+
+.deletePlanner:hover {
+  color: black;
 }
 
 .visitWebsiteBox {
   display: inline-block;
   background-color: rgba(244, 244, 244 , 0.7);
   width: 14%;
-  height: 185px;
+  height: 180px;
   margin-left: 10px;
   border-radius: 15px;
   text-align: center;
@@ -133,7 +148,60 @@
   font-size: 100px;
 }
 
-.goldColor {
+.redColor {
   color: red;
   font-weight: bolder;
+}
+
+.plannerPrice {
+  float: right;
+}
+
+@media only screen and (max-width: 1050px) {
+  .visitWebsiteBox {
+    position: relative;
+    padding-top: 13px;
+    top: 52.5px;
+    height: 80px;
+  }
+  .goToWebsiteIcon {
+    font-size: 30px;
+  }
+  .visitWebsiteText {
+    font-size: 12px;
+  }
+  .deletePlanner {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 585px) {
+  .visitWebsiteBox {
+    display: none;
+  }
+  .deletePlanner {
+    width: 70%;
+  }
+
+  .mobileVisitLink {
+    display: block;
+  }
+
+  .plannerPhone {
+    display: block;
+    margin-left: 8px;
+    float: none;
+  }
+
+  .plannerEvents {
+    width: 100%;
+  }
+
+  #plannerInnerContainer {
+    width: 85%;
+  }
+
+  .plannerName {
+    font-size: 30px;
+  }
 }
