@@ -1,61 +1,55 @@
 .welcome li {
- list-style: none;
+  list-style: none;
 }
+
 #welcomeHeader {
- font-size: 100px;
- color: white;
- cursor: default;
+  font-size: 50px;
+  color: white;
+  cursor: default;
 }
-.stepOne {
- color: white;
- text-align: center;
+
+.steps {
+  font-size: 15px;
+  color: white;
+  text-align: center;
 }
-#imgIcon {
- margin: 10px;
- font-size: 100px;
- padding: 40px;
- border: 1px solid white;
- border-radius: 100%;
- color: white;
+
+.icons {
+  margin: 10px;
+  font-size: 60px;
+  padding: 40px;
+  border: 1px solid white;
+  border-radius: 100%;
+  color: white;
 }
-.stepTwo {
- color: white;
- text-align: center;
-}
-#plannerIcon {
- margin: 10px;
- font-size: 100px;
- padding: 40px;
- border: 1px solid white;
- border-radius: 100%;
- color: white;
-}
-.stepThree {
- text-align: center;
- color: white;
-}
-#calendar {
- margin: 10px;
- font-size: 100px;
- padding: 40px;
- border: 1px solid white;
- border-radius: 100%;
- color: white;
-}
+
 #welcomeBtn {
- margin-top: 50px;
- height: 80px;
- font-size: 30px;
- padding: 15px;
- border-radius: 10px;
- background-color: #0044A1 ;
- box-shadow: 0px 1px 2px 2px black;
- border: none;
- color: white;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 80px;
+  font-size: 30px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #0044A1;
+  box-shadow: 0px 1px 2px 2px black;
+  border: none;
+  color: white;
 }
+
 #welcomeBtn:hover {
- filter: opacity(.8);
+  filter: opacity(.8);
 }
+
 .welcome {
- text-align: center;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  #welcomeHeader {
+    font-size: 100px;
+  }
+  .steps {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 }
