@@ -259,5 +259,6 @@
   }
 
   .goldColor {
-    color: gold;
+    color: red;
+    font-weight: bolder;
   }
