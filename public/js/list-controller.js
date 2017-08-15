@@ -5,7 +5,7 @@ app.controller('listCtrl', function($scope, miFactory) {
   // This function runs when the list page loads.
   // This function runs only once per refresh of the list page.
   miFactory.homeListTransition();
-
+  $scope.numOfPlannerEvents = miFactory.getPlannerEvents().length;
   // Array that stores all the OBJECTS of events that were placed in the bucket list
   // These event objects contain information of the event and all four image URLs
   $scope.bucketEvents = miFactory.getBucketEvents();
@@ -23,7 +23,7 @@ app.controller('listCtrl', function($scope, miFactory) {
   $scope.addButtonClicked = function () {
     var dateTime = $("#dateTimeInput").val();
     miFactory.addPlanner(dateTime);
-    console.log(dateTime);
+    $scope.numOfPlannerEvents += 1;
   }
   //JQuery
 

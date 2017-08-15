@@ -2,10 +2,7 @@ var app = angular.module('miModule');
 
 app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   // Home Functions/Variables
-  $scope.numOfSelectedPhotos = function() {
-    return miFactory.getLikedPhotos.length;
-  }
-  $scope.numOfPlannerEvents = miFactory.getPlannerEvents.length;
+  $scope.numOfSelectedPhotos = miFactory.getLikedPhotos().length;
   // This boolean represents the selected/unselected state of photos in the home page
   $scope.photoSelected = false;
 
@@ -13,9 +10,11 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   $scope.addOrRemovePhotoFromBucket = function() {
     if (this.photoSelected) {
       $scope.addPhotoToBucket(this.$index);
+      $scope.numOfSelectedPhotos += 1;
     }
     else {
       $scope.removePhotoFromBucket(this.$index);
+      $scope.numOfSelectedPhotos -= 1;
     }
   }
 

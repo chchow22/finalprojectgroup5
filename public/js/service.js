@@ -77,11 +77,16 @@ app.factory('miFactory', function($http) {
   // Sets up home page
   function initialSetupHome() {
 
+    // Empties the likedPhotos array
+    for (var p = 0; p < likedPhotos; p++) {
+      likedPhotos.pop();
+    }
+
     // Empties the homePhotos array, so we can proceed to add a brand new set
     // of random images
-    for (var p = 0; p < homePhotos; p++) {
-      homePhotos.pop();
-    }
+    // for (var p = 0; p < homePhotos; p++) {
+    //   homePhotos.pop();
+    // }
 
     // Performs a get request for images in the database
     // (image objects are stored in photosFromDB)
@@ -94,18 +99,14 @@ app.factory('miFactory', function($http) {
       getEvents().then(function() {
         // Performs a get request for events in the database
         // (image objects are stored in eventsFromDB)
-        console.log("Photo",photosFromDB);
-        console.log("Event", eventsFromDB);
         for(var i = 0; i < photosFromDB.length; i++) {
           for(var j = 0; j < eventsFromDB.length; j++) {
             if (photosFromDB[i].event_id == eventsFromDB[j].id) {
-              console.log("City", eventsFromDB[j].city);
               photosFromDB[i].city = eventsFromDB[j].city;
             }
           }
         }
 
-        console.log("Photo",photosFromDB);
         // Populates the array homePhotos using the first eleven IDs in randomPhotoIDs
         // The purpose of the double for loop + if statement is to search for the
         // corresponding image object of the image IDs in randomPhotoIDs
@@ -116,7 +117,6 @@ app.factory('miFactory', function($http) {
             }
           }
         }
-        console.log(homePhotos);
         // Makes sure that next time we populate homePhotos, it starts from the eleventh ID
         // in randomPhotoIDs
         homePhotosIndex = photosFromDB.length - 1;
@@ -376,7 +376,6 @@ function quicksortBasic(array) {
   // 0 is passed into setPlannerIndex, and for second, 1 is passed in, and so on...
   function setPlannerIndex(idString) {
     plannerIndex = idString;
-    console.log(plannerIndex);
   }
 
   // Makes the planner object and pushes it to plannerEvents
@@ -399,13 +398,11 @@ function quicksortBasic(array) {
   // Pushes planner event to been there done that array
   function finishPlanner(idString) {
     beenThereEvents.push(plannerEvents[idString]);
-    console.log(beenThereEvents);
 
   }
 
   // Sorts planner events by date and time
   function plannerSorter() {
-    console.log(plannerEvents);
 
     for(var t = 0; t < plannerEvents.length; t++) {
       var tenth = 0;
@@ -420,15 +417,12 @@ function quicksortBasic(array) {
       var noon;
       if (plannerEvents[t].dateTime.substring(16 + tenth, 18 + tenth) == "AM") {
         noon = 0;
-        console.log("morning");
       }
       else {
         noon = 12;
-        console.log("afternoon");
       }
 
       plannerEvents[t].priorityNumber = minute + hour * 100 + noon * 100 + day * 10000 + month * 1000000 + year * 100000000;
-      console.log(plannerEvents[t].priorityNumber);
     }
     plannerEvents.sort(function(a, b) {
       return a.priorityNumber - b.priorityNumber;
