@@ -95,20 +95,6 @@
   margin-right: 5px;
 }
 
-.addToPlannerButton {
-  float: right;
-  height: 30px;
-  margin-top: 5px;
-  margin-right: 5px;
-  border-radius: 5px;
-  outline: none;
-  color: white;
-  background-color: orange;
-  padding-left: 10px;
-  padding-right: 10px;
-  cursor: pointer;
-}
-
 .bucketEvents {
   width: 96%;
   height: 100%;
