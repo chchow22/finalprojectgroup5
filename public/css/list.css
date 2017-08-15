@@ -1,0 +1,25 @@
+#bucketContainer {
+  width: 250px;
+  margin: 30px auto;
+}
+.bucketEvents {
+  background-color: rgba(244, 244, 244 , 0.7);
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+  padding: 10px;
+}
+.firstAddToPlannerButton {
+  display: inline-block;
+}
+#imgOne {
+  width: 225px;
+  height: 150px;
+}
+.hideImage {
+  display: none;
+}
+.info {
+  margin: 10px;
+}
