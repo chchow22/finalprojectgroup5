@@ -12,6 +12,7 @@
         Add to Planner
       </button>
 
+
       <!-- Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -53,7 +54,10 @@
 
     <span class="bucketEventCategory"> {{bucketEvent.category}} </span>
     <span class="bucketEventPrice"> Price: {{bucketEvent.price}} </span>
-    <p class="bucketEventDescription"> {{bucketEvent.description}} </p>
+    <div class = "descriptionAndLink">
+      <span class="bucketEventDescription"> {{bucketEvent.description}} </span>
+      <a class="bucketEventDescription bucketEventLink" href = {{bucketEvent.website}}> Link to Website </a>
+    </div>
     <div class="fourImagesContainer">
       <img class="bucketImages" src={{bucketEvent.img1}}>
       <img class="bucketImages" src={{bucketEvent.img2}}>
@@ -70,4 +74,4 @@
   <span class='glyphicon glyphicon-calendar'></span>
   <div class = "counter"> {{numOfPlannerEvents}} </div>
 </button>
-<button type="button" class="goToTop" style="display:none;"><span class='glyphicon glyphicon-chevron-up'></span><button>
+<button type="button" class="goToTop" style="display:none;"><span class='glyphicon glyphicon-chevron-up'></span></button>
