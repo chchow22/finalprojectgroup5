@@ -57,4 +57,11 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
     }, 1000);
     return false;
   });
+
+  $('.rightIcon').hide();
+
+  $('.imageContainer').on('click', function() {
+    $('.rightIcon').show('slow');
+  });
+
 });

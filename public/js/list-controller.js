@@ -24,6 +24,7 @@ app.controller('listCtrl', function($scope, miFactory) {
     var dateTime = $("#dateTimeInput").val();
     miFactory.addPlanner(dateTime);
     $scope.numOfPlannerEvents += 1;
+    $('.rightIcon').show(1000);
   }
   //JQuery
 
@@ -44,4 +45,11 @@ app.controller('listCtrl', function($scope, miFactory) {
     }, 1000);
     return false;
   });
+
+  $('.rightIcon').hide();
+
+
+
+
+
 });
