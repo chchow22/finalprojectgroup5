@@ -1,25 +1,87 @@
 #bucketContainer {
   width: 250px;
   margin: 30px auto;
+  color: black;
 }
 .bucketEvents {
-  background-color: rgba(244, 244, 244 , 0.7);
+  background-color: rgba(244, 212, 66 , 0.3);
   border-radius: 15px;
   margin-top: 10px;
   margin-bottom: 15px;
   text-align: center;
-  padding: 10px;
+  padding: 0px 10px 5px 10px;
+  color: white;
+  font-size: 18px;
 }
 .firstAddToPlannerButton {
   display: inline-block;
 }
-#imgOne {
-  width: 225px;
+.bucketImages {
+  width: 210px;
   height: 150px;
 }
-.hideImage {
-  display: none;
+.hideImages {
+  position: absolute;
+  top: -999px;
+  left: -999px;
 }
 .info {
-  margin: 10px;
+  margin: 10px 10px 0px 10px;
+}
+
+.categoryPriceContainer {
+  width: 100%;
+}
+
+
+@media only screen and (min-width: 768px) {
+  #bucketContainer {
+    width: 75%;
+  }
+  .firstAddToPlannerButton {
+    float: right;
+    margin-top: 17px;
+    z-index: 3;
+  }
+  .bucketEventName {
+    position: relative;
+    width: 70%;
+    font-size: 40px;
+    top: 8px;
+  }
+
+  .bucketEventCategory {
+    display: inline-block;
+  }
+  .bucketEventPrice {
+    display: inline-block;
+    float: right;
+  }
+  .bucketEventDescription {
+    display: inline-block;
+  }
+  .bucketEventLink {
+    float: right;
+  }
+
+  .bucketEventAddress {
+    margin-top: 10px;
+    display: inline-block;
+  }
+  .bucketEventPhone {
+    margin-top: 10px;
+    display: inline-block;
+    float: right;
+  }
+  .bucketEvents {
+    text-align: left;
+  }
+  .fourImagesContainer {
+    text-align: center;
+  }
+  .hideImages {
+    position: static;
+  }
+
+
 }

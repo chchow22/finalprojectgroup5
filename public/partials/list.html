@@ -52,21 +52,24 @@
 
     <div class="info">
       <p class="bucketEventName"> {{bucketEvent.name}} </p>
+      <div class = "categoryPriceContainer">
       <p class="bucketEventCategory"> {{bucketEvent.category}} </p>
       <p class="bucketEventPrice"> Price: {{bucketEvent.price}} </p>
+      </div>
       <p class="bucketEventDescription"> {{bucketEvent.description}} </p>
       <a class="bucketEventDescription bucketEventLink" href={{bucketEvent.website}} target="_blank"> Link to Website </a>
-      <p class="bucketEventAddress"> {{bucketEvent.address}} </p>
-      <p class="bucketEventPhone"> {{bucketEvent.phone}} </p>
-
       <div class="fourImagesContainer">
         <img id='imgOne' class="bucketImages" src={{bucketEvent.img1}}>
-        <img class="bucketImages hideImage" src={{bucketEvent.img2}}>
-        <img class="bucketImages hideImage" src={{bucketEvent.img3}}>
-        <img class="bucketImages hideImage" src={{bucketEvent.img4}}>
+        <img class="bucketImages hideImages" src={{bucketEvent.img2}}>
+        <img class="bucketImages hideImages" src={{bucketEvent.img3}}>
+        <img class="bucketImages hideImages" src={{bucketEvent.img4}}>
       </div>
-
+      <p class="bucketEventAddress"> {{bucketEvent.address}} </p>
+      <p class="bucketEventPhone"> {{bucketEvent.phone}} </p>
     </div>
+
+
+
 
   </div>
 
