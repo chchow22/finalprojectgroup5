@@ -49,12 +49,4 @@ app.controller('listCtrl', function($scope, miFactory) {
   if ($scope.numOfPlannerEvents == 0) {
   $('.rightIcon').hide();
   }
-
-
-
-  $scope.map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 42.5629, lng: -83.1841},
-    zoom: 8
-  });
-
 });
