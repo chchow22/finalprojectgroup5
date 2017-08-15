@@ -53,7 +53,7 @@ app.controller('listCtrl', function($scope, miFactory) {
 
 
   $scope.map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
+    center: {lat: 42.5629, lng: -83.1841},
     zoom: 8
   });
 
