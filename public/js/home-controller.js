@@ -10,7 +10,7 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
 
   // This function is called whenever a photo is clicked in the home page (by ng-click)
   $scope.addOrRemovePhotoFromBucket = function(imageID) {
-    if (this.photoSelected) {
+    if (this.photoSelected == true) {
       $scope.addPhotoToBucket(imageID);
       $scope.numOfSelectedPhotos += 1;
     }

@@ -51,13 +51,11 @@ app.factory('miFactory', function($http) {
     getHomePhotos: getHomePhotos,
     addLikedPhotos: addLikedPhotos,
     removeLikedPhotos: removeLikedPhotos,
-    getLikedPhotos: getLikedPhotos,
     removeAllLikedPhotos: removeAllLikedPhotos,
 
     homeListTransition: homeListTransition,
 
     getBucketEvents: getBucketEvents,
-    deleteBucket: deleteBucket,
 
     getPlannerEvents: getPlannerEvents,
     setPlannerIndex: setPlannerIndex,
@@ -95,17 +93,16 @@ app.factory('miFactory', function($http) {
           }
         }
 
-        // Populates the array homePhotos using the first eleven IDs in randomPhotoIDs
+        // Populates the array homePhotos using the order in randomPhotoIDs
         // The purpose of the double for loop + if statement is to search for the
         // corresponding image object of the image IDs in randomPhotoIDs
-        for(var i = 0; i <= photosFromDB.length - 1; i++) {
+        for(var i = 0; i < randomPhotoIDs.length; i++) {
           for (var j = 0; j < photosFromDB.length; j++) {
             if (randomPhotoIDs[i] == photosFromDB[j].id) {
               homePhotos.push(photosFromDB[j]);
             }
           }
         }
-
       });
 
     });
@@ -175,12 +172,6 @@ app.factory('miFactory', function($http) {
 
     // Removes the photo ID from likedPhotos
     likedPhotos.splice(removeIndex, 1);
-  }
-
-  // Returns the array of IDs of selected/liked photos
-  // Can be used in home page to show how many images are liked
-  function getLikedPhotos() {
-    return likedPhotos;
   }
 
   function removeAllLikedPhotos() {
@@ -291,24 +282,24 @@ app.factory('miFactory', function($http) {
 
   // Quick sort where pivot is always the first element of the array
   function quicksortBasic(array) {
-  if(array.length < 2) {
-    return array;
-  }
-
-  var pivot = array[0];
-  var lesser = [];
-  var greater = [];
-
-  for(var i = 1; i < array.length; i++) {
-    if(array[i] < pivot) {
-      lesser.push(array[i]);
-    } else {
-      greater.push(array[i]);
+    if(array.length < 2) {
+      return array;
     }
-  }
 
-  return quicksortBasic(lesser).concat(pivot, quicksortBasic(greater));
-}
+    var pivot = array[0];
+    var lesser = [];
+    var greater = [];
+
+    for(var i = 1; i < array.length; i++) {
+      if(array[i] < pivot) {
+        lesser.push(array[i]);
+      } else {
+        greater.push(array[i]);
+      }
+    }
+
+    return quicksortBasic(lesser).concat(pivot, quicksortBasic(greater));
+  }
 
   // List Page Functions -------------------------------------------------------
 
@@ -322,9 +313,6 @@ app.factory('miFactory', function($http) {
     return plannerEvents;
   }
 
-  function deleteBucket(index) {
-    bucketEvents.splice(index, 1);
-  }
   // This function saves the index of the "Add to Planner" button that is clicked in list page
   // (The button on the page, not the one on the modal)
   // e.g. if the "add to planner" button of the first bucket list event is clicked,
