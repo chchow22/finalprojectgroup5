@@ -3,44 +3,30 @@ var app = angular.module('miModule');
 app.factory('miFactory', function($http) {
   // Database Variables --------------------------------------------------------
 
-  // Stores ALL event objects from the events table in the database
-  // Event objects contain id, name, price, category, description, four image URLs,
-  // address, phone number, and website
   var eventsFromDB;
 
-  // Stores ALL image objects from the events table in the database
-  // Event objects contain id, image URL, and the foreign key of event ID
   var photosFromDB;
 
   // Home Page Variables -------------------------------------------------------
 
-  // Array of randomized image IDs
   var randomPhotoIDs = [];
 
-  // Array of objects of images that are shown on the home page
   var homePhotos = [];
 
-  // Array of IDs of images that are selected
   var likedPhotos = [];
 
   var homeInitialized = false;
 
   // List Page Variables -------------------------------------------------------
 
-  // Array of IDs of events that are selected
   var likedEvents = [];
 
-  // Array of objects of events that are displayed on the page
   var bucketEvents = [];
 
   // Planner Page Variables ----------------------------------------------------
 
-  // Array of planner objects. Objects contain event name, event ID, date, time,
-  // address, phone, price, website
   var plannerEvents = [];
 
-  // Variable that saves the planner event index when "add to planner" is clicked
-  // on the page
   var plannerIndex;
 
 
@@ -67,21 +53,14 @@ app.factory('miFactory', function($http) {
 
   // Home Page Functions -------------------------------------------------------
 
-  // Sets up home page
   function initialSetupHome() {
 
-
-    // Performs a get request for images in the database
-    // (image objects are stored in photosFromDB)
     getPhotos().then(function() {
 
-      // Takes the number of photos and randomizes all integers below that number starting
-      // from 1 and store them into the array randomPhotoIDs (see function below)
       randomize(photosFromDB.length);
 
       getEvents().then(function() {
-        // Performs a get request for events in the database
-        // (image objects are stored in eventsFromDB)
+
         for(var i = 0; i < photosFromDB.length; i++) {
           for(var j = 0; j < eventsFromDB.length; j++) {
             if (photosFromDB[i].event_id == eventsFromDB[j].id) {
@@ -92,9 +71,7 @@ app.factory('miFactory', function($http) {
           }
         }
 
-        // Populates the array homePhotos using the order in randomPhotoIDs
-        // The purpose of the double for loop + if statement is to search for the
-        // corresponding image object of the image IDs in randomPhotoIDs
+
         for(var i = 0; i < randomPhotoIDs.length; i++) {
           for (var j = 0; j < photosFromDB.length; j++) {
             if (randomPhotoIDs[i] == photosFromDB[j].id) {
@@ -115,79 +92,61 @@ app.factory('miFactory', function($http) {
   function getHomeInitializedBool() {
     return homeInitialized;
   }
-  // Takes a number and randomizes all integers below that number starting
-  // from 1 and store them into randomPhotoIDs
+
   function randomize(count) {
 
-    // pushes first random number from 1 to "count" into randomPhotoIDs
     var randomNum = Math.floor(Math.random()*count + 1);
     randomPhotoIDs.push(randomNum);
 
-    // While randomPhotoIDs is not finished getting populated, this loop runs
     while(randomPhotoIDs.length < count) {
 
-      // Generates a number between 1 to "count"
       var randomNum = Math.floor(Math.random()*count + 1);
 
       var repeat = false;
       for(var j = 0; j < randomPhotoIDs.length; j++) {
         if (randomNum == randomPhotoIDs[j]) {
-          // if the random number generated equals to any number in randomPhotoIDs,
-          // repeat would equal true
           repeat = true;
         }
       }
 
-      // if repeat is false, then push that random number to randomPhotoIDs
       if (repeat == false) {
         randomPhotoIDs.push(randomNum);
       }
     }
   }
 
-  // Returns array of objects of images that are shown on the home page
   function getHomePhotos() {
     return homePhotos;
   }
 
-  // Adds the image ID to addLikedPhotos
   function addLikedPhotos(imageID) {
-    // Adds the ID of the selected image to likedPhotos array
     likedPhotos.push(imageID);
   }
 
-  // Removes the image ID from addLikedPhotos
   function removeLikedPhotos(imageID) {
     var removeIndex;
 
-    // Loops through all the IDs of images that are liked/selected
     for (var i = 0; i < likedPhotos.length; i++) {
 
-      // Searches for the index inside likedPhotos that we want to delete
       if (imageID == likedPhotos[i]) {
         removeIndex = i;
       }
     }
 
-    // Removes the photo ID from likedPhotos
     likedPhotos.splice(removeIndex, 1);
   }
 
   function removeAllLikedPhotos() {
-    // Empties the likedPhotos array
       likedPhotos = [];
   }
 
   // Home-List Transition Functions --------------------------------------------
 
-  // Executes when the list icon is clicked on in the home page
   function homeListTransition() {
     convertPhotosToEvents();
     eventsSorter();
   }
 
-  // Converts the array of liked photos IDs into event IDs and pushes them into
-  // likedEvents
   function convertPhotosToEvents() {
     console.log("photos", likedPhotos);
     for(var i = 0; i < likedPhotos.length; i++) {
@@ -201,14 +160,11 @@ app.factory('miFactory', function($http) {
     console.log("events", likedEvents);
   }
 
-  // Sorts the bucket events so events with most liked images come first
   function eventsSorter() {
 
-    // sorts events by ID in ascending order
     likedEvents = quicksortBasic(likedEvents);
     console.log("sorted Events", likedEvents);
 
-    // e.g. threeRep contains IDs of events that have three liked images etc.
     var oneRep = [];
     var twoRep = [];
     var threeRep = [];
@@ -237,8 +193,6 @@ app.factory('miFactory', function($http) {
           rep = 1;
         }
 
-        // Takes care of the last image, because otherwise that event would never be
-        // added to the array
         if (x == likedEvents.length - 1) {
           if (rep == 1) {
             oneRep.push(likedEvents[x]);
@@ -262,13 +216,11 @@ app.factory('miFactory', function($http) {
     console.log("reps3", threeRep);
     console.log("reps2", twoRep);
     console.log("rep1", oneRep);
-    // Bring the IDs together in the right order
+
     var noDuplicateEvents = fourRep.concat(threeRep,twoRep,oneRep);
 
-    // Empties the bucket events before populating it with event objects
     bucketEvents = [];
 
-    // Populates bucketEvents with event objects
     for(var k = 0; k < noDuplicateEvents.length; k++) {
       for(var l = 0; l < eventsFromDB.length; l++) {
         if(noDuplicateEvents[k] == eventsFromDB[l].id) {
@@ -279,7 +231,6 @@ app.factory('miFactory', function($http) {
 
   }
 
-  // Quick sort where pivot is always the first element of the array
   function quicksortBasic(array) {
     if(array.length < 2) {
       return array;
@@ -302,25 +253,18 @@ app.factory('miFactory', function($http) {
 
   // List Page Functions -------------------------------------------------------
 
-  // Returns array of objects of events that are displayed on the list page
   function getBucketEvents() {
     return bucketEvents;
   }
 
-  // Returns planner objects
   function getPlannerEvents() {
     return plannerEvents;
   }
 
-  // This function saves the index of the "Add to Planner" button that is clicked in list page
-  // (The button on the page, not the one on the modal)
-  // e.g. if the "add to planner" button of the first bucket list event is clicked,
-  // 0 is passed into setPlannerIndex, and for second, 1 is passed in, and so on...
   function setPlannerIndex(idString) {
     plannerIndex = idString;
   }
 
-  // Makes the planner object and pushes it to plannerEvents
   function addPlanner(dateTime) {
     plannerEvents.push({
       id: bucketEvents[plannerIndex].id,
@@ -336,13 +280,11 @@ app.factory('miFactory', function($http) {
 
   // Planner Page Functions ----------------------------------------------------
 
-  // Deletes a planner object based on given index
   function deletePlanner(index) {
     plannerEvents.splice(index, 1);
 
   }
 
-  // Sorts planner events by date and time
   function plannerSorter() {
 
     for(var t = 0; t < plannerEvents.length; t++) {
@@ -356,14 +298,14 @@ app.factory('miFactory', function($http) {
       var hour = parseInt(plannerEvents[t].dateTime.substring(11,12 + tenth));
       var minute = parseInt(plannerEvents[t].dateTime.substring(13 + tenth,15 + tenth));
       var noon;
+
       if (plannerEvents[t].dateTime.substring(16 + tenth, 18 + tenth) == "AM") {
         noon = 0;
       }
       else {
         noon = 12;
       }
-      //201708190213
-      //201708191230
+
       plannerEvents[t].priorityNumber = minute + hour * 100 + noon * 100 + day * 10000 + month * 1000000 + year * 100000000;
     }
     plannerEvents.sort(function(a, b) {
@@ -375,7 +317,6 @@ app.factory('miFactory', function($http) {
 
   // Database Functions ------------------------------------------------------
 
-  // Performs get call to the events table in the database
   function getEvents() {
     var p = $http({
       url: '/db/events',
@@ -386,7 +327,6 @@ app.factory('miFactory', function($http) {
     return p;
   };
 
-  // Performs get call to the photos table in the database
   function getPhotos() {
     var p = $http({
       url: '/db/photos',
