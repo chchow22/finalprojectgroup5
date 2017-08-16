@@ -14,11 +14,11 @@ app.factory('miFactory', function($http) {
 
   // Home Page Variables -------------------------------------------------------
 
-  // Array of objects of images that are shown on the home page
-  var homePhotos = [];
-
   // Array of randomized image IDs
   var randomPhotoIDs = [];
+
+  // Array of objects of images that are shown on the home page
+  var homePhotos = [];
 
   // Array of IDs of images that are selected
   var likedPhotos = [];
@@ -35,7 +35,8 @@ app.factory('miFactory', function($http) {
 
   // Planner Page Variables ----------------------------------------------------
 
-  // Array of planner objects. Objects contain event name, event ID, data, and time
+  // Array of planner objects. Objects contain event name, event ID, date, time,
+  // address, phone, price, website
   var plannerEvents = [];
 
   // Variable that saves the planner event index when "add to planner" is clicked
@@ -88,6 +89,8 @@ app.factory('miFactory', function($http) {
           for(var j = 0; j < eventsFromDB.length; j++) {
             if (photosFromDB[i].event_id == eventsFromDB[j].id) {
               photosFromDB[i].city = eventsFromDB[j].city;
+              photosFromDB[i].category = eventsFromDB[j].category;
+              photosFromDB[i].description = eventsFromDB[j].description;
             }
           }
         }
@@ -129,6 +132,7 @@ app.factory('miFactory', function($http) {
 
       // Generates a number between 1 to "count"
       var randomNum = Math.floor(Math.random()*count + 1);
+
       var repeat = false;
       for(var j = 0; j < randomPhotoIDs.length; j++) {
         if (randomNum == randomPhotoIDs[j]) {
@@ -139,7 +143,7 @@ app.factory('miFactory', function($http) {
       }
 
       // if repeat is false, then push that random number to randomPhotoIDs
-      if (!repeat) {
+      if (repeat == false) {
         randomPhotoIDs.push(randomNum);
       }
     }
@@ -286,7 +290,7 @@ app.factory('miFactory', function($http) {
   }
 
   // Quick sort where pivot is always the first element of the array
-function quicksortBasic(array) {
+  function quicksortBasic(array) {
   if(array.length < 2) {
     return array;
   }
