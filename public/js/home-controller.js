@@ -7,25 +7,25 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   $scope.photoSelected = false;
 
   // This function is called whenever a photo is clicked in the home page (by ng-click)
-  $scope.addOrRemovePhotoFromBucket = function() {
+  $scope.addOrRemovePhotoFromBucket = function(imageID) {
     if (this.photoSelected) {
-      $scope.addPhotoToBucket(this.$index);
+      $scope.addPhotoToBucket(imageID);
       $scope.numOfSelectedPhotos += 1;
     }
     else {
-      $scope.removePhotoFromBucket(this.$index);
+      $scope.removePhotoFromBucket(imageID);
       $scope.numOfSelectedPhotos -= 1;
     }
   }
 
   // This function runs when photo is selected (see below for deselection)
-  $scope.addPhotoToBucket = function(index) {
-    miFactory.addLikedPhotos(index);
+  $scope.addPhotoToBucket = function(imageID) {
+    miFactory.addLikedPhotos(imageID);
   }
 
   // This function runs when photo is deselected
-  $scope.removePhotoFromBucket = function(index) {
-    miFactory.removeLikedPhotos(index);
+  $scope.removePhotoFromBucket = function(imageID) {
+    miFactory.removeLikedPhotos(imageID);
   }
 
   // This is the array that stores image OBJECTS that are currently displayed in the home page

@@ -153,23 +153,21 @@ app.factory('miFactory', function($http) {
     return homePhotos;
   }
 
-  // The parameter index is the index of the selected image in the home page
-  // We can get the ID of that image at that index with randomPhotoIDs because
-  // we populated the home page with images using the IDs in randomPhotoIDs
-  function addLikedPhotos(index) {
+  // Adds the image ID to addLikedPhotos
+  function addLikedPhotos(imageID) {
     // Adds the ID of the selected image to likedPhotos array
-    likedPhotos.push(randomPhotoIDs[index]);
+    likedPhotos.push(imageID);
   }
 
-  // See the function above for explanation of "index"
-  function removeLikedPhotos(index) {
+  // Removes the image ID from addLikedPhotos
+  function removeLikedPhotos(imageID) {
     var removeIndex;
 
     // Loops through all the IDs of images that are liked/selected
     for (var i = 0; i < likedPhotos.length; i++) {
 
       // Searches for the index inside likedPhotos that we want to delete
-      if (randomPhotoIDs[index] == likedPhotos[i]) {
+      if (imageID == likedPhotos[i]) {
         removeIndex = i;
       }
     }

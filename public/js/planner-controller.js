@@ -13,13 +13,6 @@ app.controller("plannerCtrl", function($scope, miFactory) {
     miFactory.deletePlanner(this.$index);
   }
 
-  // When "been there done that" button on planner event clicked, this function triggers
-  // Passes in index of that planner event
-  // e.g. if button of the first bucket list event is clicked, 0 is passed into finishPlanner
-  $scope.finishButtonClicked = function() {
-    miFactory.finishPlanner(this.$index);
-  }
-
   //JQuery
 
   // When home page is scrolled, jquery checks if the distance from the top is more than 200
