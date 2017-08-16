@@ -25,6 +25,14 @@ h1 {
 #filter {
   display: block;
   margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  border-radius: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  color: black;
+  border: 1px solid black;
+  outline: none;
 }
 .imageContainer {
   text-align: center;
