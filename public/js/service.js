@@ -246,9 +246,6 @@ app.factory('miFactory', function($http) {
         // Takes care of the last image, because otherwise that event would never be
         // added to the array
         if (x == likedEvents.length - 1) {
-          if (likedEvents[x] == likedEvents[x - 1]) {
-            rep += 1;
-          }
           if (rep == 1) {
             oneRep.push(likedEvents[x]);
           }
@@ -272,12 +269,7 @@ app.factory('miFactory', function($http) {
     console.log("reps2", twoRep);
     console.log("rep1", oneRep);
     // Bring the IDs together in the right order
-    likedEvents = fourRep.concat(threeRep,twoRep,oneRep);
-
-
-    // Deletes duplicate event IDs and stores it in noDuplicateEvents
-    var noDuplicateEvents = deleteDuplicates(likedEvents);
-    console.log("deleted duplicates", noDuplicateEvents);
+    var noDuplicateEvents = fourRep.concat(threeRep,twoRep,oneRep);
 
     // Empties the bucket events before populating it with event objects
     bucketEvents = [];
@@ -291,16 +283,6 @@ app.factory('miFactory', function($http) {
       }
     }
 
-  }
-
-  // Deletes all duplicates of an array
-  function deleteDuplicates(array) {
-    for(var i = array.length - 2; i >= 0; i--) {
-      if (array[i] == array[i + 1]) {
-        array.splice(i + 1, 1);
-      }
-    }
-    return array;
   }
 
   // Quick sort where pivot is always the first element of the array
