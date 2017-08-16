@@ -23,6 +23,8 @@ app.factory('miFactory', function($http) {
   // Array of IDs of images that are selected
   var likedPhotos = [];
 
+  var homeInitialized = false;
+
   // List Page Variables -------------------------------------------------------
 
   // Array of IDs of events that are selected
@@ -44,10 +46,12 @@ app.factory('miFactory', function($http) {
   // Returns functions that should be accessible from other files
   return {
     initialSetupHome: initialSetupHome,
+    getHomeInitializedBool: getHomeInitializedBool,
     getHomePhotos: getHomePhotos,
     addLikedPhotos: addLikedPhotos,
     removeLikedPhotos: removeLikedPhotos,
     getLikedPhotos: getLikedPhotos,
+    removeAllLikedPhotos: removeAllLikedPhotos,
 
     homeListTransition: homeListTransition,
 
@@ -68,16 +72,6 @@ app.factory('miFactory', function($http) {
   // Sets up home page
   function initialSetupHome() {
 
-    // Empties the likedPhotos array
-    for (var p = 0; p < likedPhotos; p++) {
-      likedPhotos.pop();
-    }
-
-    // Empties the homePhotos array, so we can proceed to add a brand new set
-    // of random images
-    // for (var p = 0; p < homePhotos; p++) {
-    //   homePhotos.pop();
-    // }
 
     // Performs a get request for images in the database
     // (image objects are stored in photosFromDB)
@@ -114,11 +108,14 @@ app.factory('miFactory', function($http) {
     });
 
 
-
+    homeInitialized = true;
 
 
   }
 
+  function getHomeInitializedBool() {
+    return homeInitialized;
+  }
   // Takes a number and randomizes all integers below that number starting
   // from 1 and store them into randomPhotoIDs
   function randomize(count) {
@@ -180,6 +177,11 @@ app.factory('miFactory', function($http) {
   // Can be used in home page to show how many images are liked
   function getLikedPhotos() {
     return likedPhotos;
+  }
+
+  function removeAllLikedPhotos() {
+    // Empties the likedPhotos array
+      likedPhotos = [];
   }
 
   // Home-List Transition Functions --------------------------------------------

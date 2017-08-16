@@ -6,6 +6,8 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   // This boolean represents the selected/unselected state of photos in the home page
   $scope.photoSelected = false;
 
+  $scope.homeInitialized = miFactory.getHomeInitializedBool();
+
   // This function is called whenever a photo is clicked in the home page (by ng-click)
   $scope.addOrRemovePhotoFromBucket = function(imageID) {
     if (this.photoSelected) {
@@ -35,8 +37,11 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   // This function runs when the home page loads.
   // This function runs only once per refresh of the home page.
 
-  if ($scope.numOfSelectedPhotos == 0) {
+  if ($scope.homeInitialized == false) {
     miFactory.initialSetupHome();
+  }
+  else {
+    miFactory.removeAllLikedPhotos();
   }
 
 
