@@ -152,6 +152,19 @@
   float: right;
 }
 
+.editDateTime {
+  background-color: purple;
+  color: white;
+  border-radius: 5px;
+  width: 100px;
+  margin-left: 10px;
+  outline: none;
+}
+
+#myModal2 {
+  color: purple;
+}
+
 @media only screen and (max-width: 1100px) {
   .visitWebsiteBox {
     position: relative;
@@ -167,6 +180,9 @@
   }
   .deletePlanner {
     font-size: 12px;
+  }
+  .editDateTime {
+
   }
 }
 
@@ -198,5 +214,9 @@
 
   .plannerName {
     font-size: 30px;
+  }
+
+  .editDateTime {
+
   }
 }

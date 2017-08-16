@@ -13,6 +13,14 @@ app.controller("plannerCtrl", function($scope, miFactory) {
     miFactory.deletePlanner(this.$index);
   }
 
+  $scope.savePlannerIndex = function() {
+    miFactory.setPlannerIndex(this.$index);
+  }
+
+  $scope.editButtonClicked = function() {
+    var dateTime = $("#dateTimeInput2").val();
+    miFactory.editPlannerDateTime(dateTime);
+  }
   //JQuery
 
   // When home page is scrolled, jquery checks if the distance from the top is more than 200

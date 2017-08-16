@@ -60,7 +60,8 @@ app.factory('miFactory', function($http) {
     getPlannerEvents: getPlannerEvents,
     setPlannerIndex: setPlannerIndex,
     addPlanner: addPlanner,
-    deletePlanner: deletePlanner
+    deletePlanner: deletePlanner,
+    editPlannerDateTime: editPlannerDateTime
   }
 
 
@@ -342,6 +343,10 @@ app.factory('miFactory', function($http) {
 
   }
 
+  function editPlannerDateTime(dateTime) {
+    plannerEvents[plannerIndex].dateTime = dateTime;
+    plannerSorter();
+  }
   // Sorts planner events by date and time
   function plannerSorter() {
 

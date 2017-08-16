@@ -5,7 +5,7 @@
 
 <div id = "plannerOuterContainer" style="">
  <div id = "plannerInnerContainer">
-  
+
    <div ng-repeat = "plannerEvent in plannerEvents">
      <div class = "plannerOuterIndexBox">
         <div class = "plannerIndexBox">
@@ -14,6 +14,45 @@
       </div>
       <span class = "plannerEvents">
          <span type = "text" class = "plannerDate plannerTextColor"> {{plannerEvent.dateTime}} </span>
+         <button type = "button" class = "editDateTime" data-toggle="modal" data-target="#myModal2" ng-click="savePlannerIndex()"> Edit </button>
+
+         <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal2Label">
+           <div class="modal-dialog" role="document">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <h4 class="modal-title" id="myModalLabel">Edit Date and Time</h4>
+               </div>
+               <div class="modal-body">
+                 <div class="container">
+                   <div class="row">
+                     <div class='col-sm-6'>
+                       <div class="form-group">
+                         <div class='input-group date' id='datetimepicker1'>
+                           <input type="text" placeholder="Click the calendar button" class="form-control" id="dateTimeInput2" />
+                           <span class="input-group-addon">
+                           <span class="glyphicon glyphicon-calendar"></span>
+                           </span>
+                         </div>
+                       </div>
+                     </div>
+                     <script type="text/javascript">
+                       $(function() {
+                         $('#datetimepicker1').datetimepicker();
+                       });
+                     </script>
+                   </div>
+                 </div>
+
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-default" id="editPlanner{{bucketEvent.id}}" ng-click="editButtonClicked()" data-dismiss="modal"> Update Planner </button>
+               </div>
+             </div>
+           </div>
+         </div>
+
          <span class= "plannerTextColor plannerPrice"> {{plannerEvent.price}} </span>
          <p class = "plannerName plannerTextColor"> {{plannerEvent.name}}
          </p>
