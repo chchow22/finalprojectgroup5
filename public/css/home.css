@@ -25,6 +25,7 @@ h1 {
 #filter {
   display: block;
   margin: 0 auto;
+  margin-top: 20px;
   padding: 10px;
   text-align: center;
   border-radius: 15px;
@@ -33,6 +34,9 @@ h1 {
   color: black;
   border: 1px solid black;
   outline: none;
+}
+#filter:focus::-webkit-input-placeholder{
+  color: transparent;
 }
 .imageContainer {
   text-align: center;
