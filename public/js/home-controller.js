@@ -2,7 +2,7 @@ var app = angular.module('miModule');
 
 app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   // Home Functions/Variables
-  $scope.numOfSelectedPhotos = miFactory.getLikedPhotos().length;
+  $scope.numOfSelectedPhotos = 0;
   // This boolean represents the selected/unselected state of photos in the home page
   $scope.photoSelected = false;
 
@@ -66,7 +66,7 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
     return false;
   });
 
-  if ($scope.numOfSelectedPhotos == 0) {
+  if ($scope.homeInitialized == false) {
   $('.rightIcon').hide();
 }
   $('.imageContainer').on('click', function() {

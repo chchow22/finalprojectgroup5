@@ -267,22 +267,25 @@ app.factory('miFactory', function($http) {
     if (likedEvents.length == 1) {
       oneRep.push(likedEvents[0]);
     }
-
+    console.log("reps4", fourRep);
+    console.log("reps3", threeRep);
+    console.log("reps2", twoRep);
+    console.log("rep1", oneRep);
     // Bring the IDs together in the right order
     likedEvents = fourRep.concat(threeRep,twoRep,oneRep);
-    console.log("reps", fourRep, threeRep, twoRep, oneRep);
 
-    // Deletes duplicate event IDs from likedEvents
-    likedEvents = deleteDuplicates(likedEvents);
-    console.log("deleted duplicates", likedEvents);
+
+    // Deletes duplicate event IDs and stores it in noDuplicateEvents
+    var noDuplicateEvents = deleteDuplicates(likedEvents);
+    console.log("deleted duplicates", noDuplicateEvents);
 
     // Empties the bucket events before populating it with event objects
     bucketEvents = [];
 
     // Populates bucketEvents with event objects
-    for(var k = 0; k < likedEvents.length; k++) {
+    for(var k = 0; k < noDuplicateEvents.length; k++) {
       for(var l = 0; l < eventsFromDB.length; l++) {
-        if(likedEvents[k] == eventsFromDB[l].id) {
+        if(noDuplicateEvents[k] == eventsFromDB[l].id) {
           bucketEvents.push(eventsFromDB[l]);
         }
       }
