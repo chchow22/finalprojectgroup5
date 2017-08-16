@@ -1,4 +1,4 @@
-<div class='imgArticle' ng-repeat = "homePhoto in homePhotos" ng-class="{'selected': photoSelected}" ng-click="photoSelected = !photoSelected; addOrRemovePhotoFromBucket()">
+<div class='imgArticle' ng-repeat = "homePhoto in homePhotos | filter: city" ng-class="{'selected': photoSelected}" ng-click="photoSelected = !photoSelected; addOrRemovePhotoFromBucket()">
 <img ng-src = {{homePhoto.img_url}} >
 <footer class="imgFooter" style="font-family: 'Roboto', sans-serif; font-size: 20px; font-weight:bold;">
   {{homePhoto.city}}

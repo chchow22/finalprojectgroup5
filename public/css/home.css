@@ -22,6 +22,10 @@ h1 {
   cursor: default;
   font-family: 'Roboto', sans-serif;
 }
+#filter {
+  display: block;
+  margin: 0 auto;
+}
 .imageContainer {
   text-align: center;
   margin: 0 auto;

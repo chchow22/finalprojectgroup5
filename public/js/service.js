@@ -17,9 +17,6 @@ app.factory('miFactory', function($http) {
   // Array of objects of images that are shown on the home page
   var homePhotos = [];
 
-  // "The number of images shown on home page" - 1.
-  var homePhotosIndex;
-
   // Array of randomized image IDs
   var randomPhotoIDs = [];
 
@@ -43,12 +40,6 @@ app.factory('miFactory', function($http) {
   // on the page
   var plannerIndex;
 
-  // Profile Page Variables ----------------------------------------------------
-
-  // Array of objects of planner events that have been saved to profile that
-  // have been "been there done that" by the user
-  // Objects contain event name, event ID, data, and time
-  var beenThereEvents = [];
 
   // Returns functions that should be accessible from other files
   return {
@@ -117,9 +108,7 @@ app.factory('miFactory', function($http) {
             }
           }
         }
-        // Makes sure that next time we populate homePhotos, it starts from the eleventh ID
-        // in randomPhotoIDs
-        homePhotosIndex = photosFromDB.length - 1;
+
       });
 
     });

@@ -35,7 +35,10 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
   // This function runs when the home page loads.
   // This function runs only once per refresh of the home page.
 
+  if ($scope.numOfSelectedPhotos == 0) {
     miFactory.initialSetupHome();
+  }
+
 
 
   //JQuery
@@ -58,10 +61,12 @@ app.controller('homeCtrl', function($scope, $timeout, miFactory) {
     return false;
   });
 
+  if ($scope.numOfSelectedPhotos == 0) {
   $('.rightIcon').hide();
-
+}
   $('.imageContainer').on('click', function() {
     $('.rightIcon').show('slow');
   });
+
 
 });
