@@ -60,8 +60,7 @@ app.factory('miFactory', function($http) {
     getPlannerEvents: getPlannerEvents,
     setPlannerIndex: setPlannerIndex,
     addPlanner: addPlanner,
-    deletePlanner: deletePlanner,
-    finishPlanner: finishPlanner
+    deletePlanner: deletePlanner
   }
 
 
@@ -338,14 +337,8 @@ app.factory('miFactory', function($http) {
   // Planner Page Functions ----------------------------------------------------
 
   // Deletes a planner object based on given index
-  function deletePlanner(idString) {
-    plannerEvents.splice(idString, 1);
-
-  }
-
-  // Pushes planner event to been there done that array
-  function finishPlanner(idString) {
-    beenThereEvents.push(plannerEvents[idString]);
+  function deletePlanner(index) {
+    plannerEvents.splice(index, 1);
 
   }
 
@@ -369,7 +362,8 @@ app.factory('miFactory', function($http) {
       else {
         noon = 12;
       }
-
+      //201708190213
+      //201708191230
       plannerEvents[t].priorityNumber = minute + hour * 100 + noon * 100 + day * 10000 + month * 1000000 + year * 100000000;
     }
     plannerEvents.sort(function(a, b) {
