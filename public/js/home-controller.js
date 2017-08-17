@@ -1,6 +1,7 @@
 var app = angular.module('miModule');
 
-app.controller('homeCtrl', function($scope, $timeout, miFactory) {
+app.controller('homeCtrl', function($scope, $timeout, miFactory, $anchorScroll) {
+  $anchorScroll();
   // Home Functions/Variables
   $scope.numOfSelectedPhotos = 0;
   // This boolean represents the selected/unselected state of photos in the home page
