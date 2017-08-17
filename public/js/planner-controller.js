@@ -1,7 +1,7 @@
 var app = angular.module("miModule");
 
-app.controller("plannerCtrl", function($scope, miFactory) {
-
+app.controller("plannerCtrl", function($scope, miFactory, $anchorScroll) {
+  $anchorScroll();
   // Array that contains all planner event OBJECTS
   // These objects have the event name, event ID, date, and time
   $scope.plannerEvents = miFactory.getPlannerEvents();

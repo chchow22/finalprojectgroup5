@@ -1,7 +1,7 @@
 var app = angular.module("miModule");
 
-app.controller('listCtrl', function($scope, miFactory) {
-
+app.controller('listCtrl', function($scope, miFactory, $anchorScroll) {
+  $anchorScroll();
   // This function runs when the list page loads.
   // This function runs only once per refresh of the list page.
   miFactory.homeListTransition();
