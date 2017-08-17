@@ -79,6 +79,10 @@ h1 {
   cursor: pointer;
 }
 .leftIcon span, .rightIcon span, .goToTop span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: block;
   text-align: center;
 }
