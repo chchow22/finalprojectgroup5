@@ -115,15 +115,19 @@ h1 {
   width: 500px;
 }
 .counter {
+  text-align: center;
   font-size: 20px;
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   position: fixed;
   top: 50px;
-  right: 8px;
+  right: 15px;
   outline: none;
   background: none;
-  color: white;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 100%;
+  color: black;
   font-weight: bold;
   cursor: default;
 }
@@ -159,10 +163,13 @@ h1 {
     border-color: white;
   }
   .counter {
+    background: none;
     font-size: 30px;
     height: 100px;
     width: 100px;
     top: 120px;
+    border: none;
+    color: white;
   }
   .goToTop {
     font-size: 40px;
