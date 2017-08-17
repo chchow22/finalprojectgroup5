@@ -63,6 +63,7 @@ h1 {
   cursor: pointer;
 }
 .leftIcon {
+  text-align: center;
   font-size: 20px;
   height: 40px;
   width: 40px;
@@ -78,6 +79,7 @@ h1 {
   cursor: pointer;
 }
 .rightIcon {
+  text-align: center;
   font-size: 20px;
   height: 40px;
   width: 40px;
@@ -93,6 +95,7 @@ h1 {
   cursor: pointer;
 }
 .goToTop {
+  text-align: center;
   font-size: 20px;
   height: 40px;
   width: 40px;
