@@ -191,7 +191,7 @@ app.factory('miFactory', function($http) {
   // Converts the array of liked photos IDs into event IDs and pushes them into
   // likedEvents
   function convertPhotosToEvents() {
-    console.log("photos", likedPhotos);
+  
     for(var i = 0; i < likedPhotos.length; i++) {
       for(var j = 0; j < photosFromDB.length; j++) {
         if(likedPhotos[i] == photosFromDB[j].id) {
@@ -200,7 +200,7 @@ app.factory('miFactory', function($http) {
       }
     }
 
-    console.log("events", likedEvents);
+
   }
 
   // Sorts the bucket events so events with most liked images come first
@@ -208,7 +208,7 @@ app.factory('miFactory', function($http) {
 
     // sorts events by ID in ascending order
     likedEvents = quicksortBasic(likedEvents);
-    console.log("sorted Events", likedEvents);
+
 
     // e.g. threeRep contains IDs of events that have three liked images etc.
     var oneRep = [];
@@ -260,10 +260,7 @@ app.factory('miFactory', function($http) {
     if (likedEvents.length == 1) {
       oneRep.push(likedEvents[0]);
     }
-    console.log("reps4", fourRep);
-    console.log("reps3", threeRep);
-    console.log("reps2", twoRep);
-    console.log("rep1", oneRep);
+
     // Bring the IDs together in the right order
     var noDuplicateEvents = fourRep.concat(threeRep,twoRep,oneRep);
 
@@ -315,7 +312,7 @@ app.factory('miFactory', function($http) {
       if (likedEventsTemp[y] == bucketEvents[index].id) {
         likedEventsTemp.splice(y, 1);
       }
-      console.log("LikedEventsTemp: y = ", y, " ", likedEventsTemp);
+
     }
 
     bucketEvents.splice(index, 1);
