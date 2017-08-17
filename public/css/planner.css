@@ -59,6 +59,8 @@
   margin-top: 5px;
   margin-left: 8px;
   margin-bottom: 0;
+  font-size: 18px;
+  height: 26px;
 }
 
 .plannerTime {
@@ -79,6 +81,7 @@
 
 .plannerAddress {
   margin-left: 8px;
+  width: auto;
 }
 .plannerPhone {
   float: right;
@@ -148,20 +151,41 @@
   font-size: 100px;
 }
 
+.namePriceContainer {
+  width: 100%;
+  height: auto;
+}
+
 .plannerPrice {
+  position: relative;
   float: right;
+  font-size: 35px;
+  top: 2px;
 }
 
 .editDateTime {
   width: 100px;
-  margin-left: 16px;
   outline: none;
+  float: right;
+  height: 30px;
+  margin: 0;
 }
 
 #myModal2 {
   color: purple;
 }
 
+@media only screen and (max-width: 1210px) {
+  .visitWebsiteText {
+    font-size: 14px;
+  }
+  .goToWebsiteIcon {
+    font-size: 50px;
+  }
+  .visitWebsiteBox {
+    height: 125px;
+  }
+}
 @media only screen and (max-width: 1100px) {
   .visitWebsiteBox {
     position: relative;
@@ -181,9 +205,15 @@
   .editDateTime {
 
   }
+
+  .plannerPrice {
+    top: 0px;
+    font-size: 15px;
+    top: 20px;
+  }
 }
 
-@media only screen and (max-width: 585px) {
+@media only screen and (max-width: 746px) {
   .visitWebsiteBox {
     display: none;
   }
@@ -210,10 +240,16 @@
   }
 
   .plannerName {
+    display: inline-block;
+    width: 70%;
     font-size: 30px;
   }
 
   .editDateTime {
 
+  }
+
+  .plannerPrice {
+    top: 0px;
   }
 }
