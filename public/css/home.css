@@ -139,7 +139,9 @@ h1 {
   font-weight: bold;
   cursor: default;
 }
-
+.tooltip {
+  background-color: blue;
+}
 .selected {
   background-color: rgb(244, 212, 66);
 }
