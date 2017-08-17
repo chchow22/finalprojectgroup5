@@ -153,11 +153,8 @@
 }
 
 .editDateTime {
-  background-color: purple;
-  color: white;
-  border-radius: 5px;
   width: 100px;
-  margin-left: 10px;
+  margin-left: 16px;
   outline: none;
 }
 

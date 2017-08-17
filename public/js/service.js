@@ -310,15 +310,16 @@ app.factory('miFactory', function($http) {
   }
 
   function deleteBucketEvent(index) {
-
-    for(var y = likedEvents.length - 1; y >= 0 ; y--) {
-      if (likedEvents[y] == bucketEvents[index].id) {
-        likedEvents.splice(y, 1);
+    likedEventsTemp = likedEvents;
+    for(var y = likedEventsTemp.length - 1; y >= 0 ; y--) {
+      if (likedEventsTemp[y] == bucketEvents[index].id) {
+        likedEventsTemp.splice(y, 1);
       }
-      console.log("LikedEvents: y = ", y, " ", likedEvents);
+      console.log("LikedEventsTemp: y = ", y, " ", likedEventsTemp);
     }
 
     bucketEvents.splice(index, 1);
+    likedEvents = likedEventsTemp;
 
   }
 

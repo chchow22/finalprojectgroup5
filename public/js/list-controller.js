@@ -29,6 +29,9 @@ app.controller('listCtrl', function($scope, miFactory) {
 
   $scope.deleteButtonClicked = function() {
     miFactory.deleteBucketEvent(this.$index);
+    $(function() {
+      $('#datetimepicker1').datetimepicker();
+    });
   }
   //JQuery
 
