@@ -26,6 +26,10 @@ app.controller('listCtrl', function($scope, miFactory) {
     $scope.numOfPlannerEvents += 1;
     $('.rightIcon').show(1000);
   }
+
+  $scope.deleteButtonClicked = function() {
+    miFactory.deleteBucketEvent(this.$index);
+  }
   //JQuery
 
   // When home page is scrolled, jquery checks if the distance from the top is more than 200

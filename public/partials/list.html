@@ -6,10 +6,13 @@
 <div id="bucketContainer">
 
   <div class="bucketEvents" ng-repeat="bucketEvent in bucketEvents">
+
+
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg firstAddToPlannerButton" data-toggle="modal" data-target="#myModal" ng-click="savePlannerIndex()">
     Add to Planner
     </button>
+
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -66,6 +69,7 @@
       </div>
       <p class="bucketEventAddress"> {{bucketEvent.address}} </p>
       <p class="bucketEventPhone"> {{bucketEvent.phone}} </p>
+      <button class = "deleteBucket" ng-click = "deleteButtonClicked()"> Delete </button>
     </div>
 
 

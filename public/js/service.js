@@ -27,7 +27,7 @@ app.factory('miFactory', function($http) {
 
   // List Page Variables -------------------------------------------------------
 
-  // Array of IDs of events that are selected
+  // Array of IDs of events that are/have been selected
   var likedEvents = [];
 
   // Array of objects of events that are displayed on the page
@@ -56,10 +56,11 @@ app.factory('miFactory', function($http) {
     homeListTransition: homeListTransition,
 
     getBucketEvents: getBucketEvents,
-
+    deleteBucketEvent: deleteBucketEvent,
     getPlannerEvents: getPlannerEvents,
     setPlannerIndex: setPlannerIndex,
     addPlanner: addPlanner,
+
     deletePlanner: deletePlanner,
     editPlannerDateTime: editPlannerDateTime
   }
@@ -306,6 +307,19 @@ app.factory('miFactory', function($http) {
   // Returns array of objects of events that are displayed on the list page
   function getBucketEvents() {
     return bucketEvents;
+  }
+
+  function deleteBucketEvent(index) {
+
+    for(var y = likedEvents.length - 1; y >= 0 ; y--) {
+      if (likedEvents[y] == bucketEvents[index].id) {
+        likedEvents.splice(y, 1);
+      }
+      console.log("LikedEvents: y = ", y, " ", likedEvents);
+    }
+
+    bucketEvents.splice(index, 1);
+
   }
 
   // Returns planner objects

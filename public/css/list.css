@@ -45,6 +45,19 @@
   color: black;
 }
 
+.deleteBucket {
+  display: block;
+  margin: 0 auto;
+  height: 36px;
+  width: 100px;
+  border-radius: 8px;
+  outline: none;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.7);
+  cursor: pointer;
+  font-size: 15px;
+}
+
 @media only screen and (min-width: 768px) {
   #bucketContainer {
     width: 75%;
@@ -97,5 +110,8 @@
     position: static;
   }
 
+  .deleteBucket {
+    width: 200px;
+  }
 
 }
